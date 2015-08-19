@@ -19,7 +19,17 @@ BrowserSync will reload the page everytime you make a change in the `src` direct
 Run `gulp produce` after going into the `leungenterprises.github.io` directory to compile and minify all your files.
 Run `gulp production` to do the above (produce your files) and then serve the production files at http://localhost:8080
 ### Deployment
-Run `gulp deploy` to deploy to the gh-pages branch of your remote repository.  (Make sure you have a remote set in your local git repo)
+1. If you haven't created a git repo, run `git init` to start.
+2. Then, `git add .` and `git commit -m "Initial"`.
+3. Next, for user pages, rename the branch by running `git branch -m dev`.
+4. Run `git remote add origin <REPO URL>`.
+5. Then, `git push origin dev`.
+6. Next, create a new branch by running `git branch -b master`.
+7. Delete every file except for the `dist` folder and the `README.md` file by running `git rm -rf <file name>`
+8. Next, run `git mv dist/* .` to move the files in `dist` to the current folder
+9. Then, run `git add .` and `git commit -m 'initial deploy'`.
+10. To deploy to gh-pages run `git push origin master`.
+11. Finally, to checkout back to the `dev` branch without pulling all the changes you made, run `git checkout -f dev`
 
 ## Social
 - Follow [@LeungEnterprise](http://twitter.com/LeungEnterprise) on Twitter
