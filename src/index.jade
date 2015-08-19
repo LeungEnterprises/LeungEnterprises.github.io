@@ -1,0 +1,190 @@
+extends layout
+
+block head
+  title Best Web Design Philadelphia, PA - Leung Enterprises
+  meta(name="description" content="Leung Enterprises is a Philly-based web design and development shop.  We build modern, responsive websites that work great on all platforms.")
+  meta(name='keywords' content='web design, philadelphia, html5, jquery, web development, affordable, responsive, modern, fast')
+  style.
+    .autoplay #video-bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      z-index: -1;
+    }
+    .no-autoplay #video-bg {
+      display: none;
+    }
+    .no-autoplay #video-container {
+      background: url('/img/milkyway.jpg');
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+    }
+block content
+  - var page = 'home'
+  include partials/header
+  main
+    #video-container
+      video#video-bg(poster='/img/milkyway.jpg' autoplay loop)
+        source(src="/img/milkyway.webm" type="video/webm")
+        source(src="/img/milkyway.mp4" type="video/mp4")
+    .jumbotron.full-page.landing.trianglify
+      .container
+        div
+          h1.text-light.text-uppercase.wow.fadeIn(data-wow-delay='0.3s') Need a classy website?
+          h2.text-light.wow.fadeIn(data-wow-delay='0.5s') Don't worry - Leung Enterprises can do that all, and more.
+        div.paginate
+          a(href='#intro-text')
+            i.ion-chevron-down.fa-2x.wow.bounce(data-wow-iteration='2' data-wow-delay='0.7s')
+    .jumbotron.half-page.flex-center#intro-text
+      .container
+        h2.text-light.line-1p5.wow.fadeIn(data-wow-delay='0.3s').
+          Leung Enterprises is dedicated to helping you and your business succeed. 
+          We build affordable, responsive websites that drive sales and convert 
+          customers.  We're eager to work with you and can't wait to get started.
+        //- #[a(href='#contact-info') below].
+    .jumbotron.full-page.parallax-window.trianglify#about(data-parallax='scroll' data-speed='0.25' data-image-src='/img/milkyway.jpg')
+      .container.text-center
+        h1.logo
+          span.leung Leung
+          span.enterprises Enterprises
+        .panel.col-md-8.col-md-offset-2.wow.fadeIn(style='margin-top: 45px')
+          .panel-body
+            h2.text-light.text-uppercase Why us?
+            br
+            p.
+              A classy website, custom emails, domain and hosting setup&mdash;whatever you need, we can do it.
+              With Leung Enterprises, getting an awesome new website for your business is simple and straightforward.
+            br
+            a.btn.btn-success.btn-lg(href='./about') More About Us
+    .jumbotron.full-page.light-bg#work
+      .container-fluid
+        .row.wow.fadeIn
+          .col-sm-6
+            a(href='./portfolio/saffron-indian')
+              img.img-responsive.box-shadow(src="/img/saffron.jpg")
+          .col-sm-5.col-sm-offset-1
+            h2 The Art of Blending Spices
+            br
+            p.
+              Saffron Indian Kitchen is a fine dining establishment with locations in Ambler and Bala Cynwyd, PA.
+              Leung Enterprises was commissioned to create a high-quality website which would showcase the restaurant's
+              selection of Indian cuisine, highlighting items such as samosas and tikka masala.
+            br
+            a.btn.btn-info.btn-lg.hidden-xs(href='./portfolio/saffron-indian') More Info
+        br
+        br
+        br
+        .row.text-center.hidden-xs
+          .col-sm-4.wow.fadeIn(data-wow-delay='0.3s')
+            a.portfolio-link(href='./portfolio/ashe-attire')
+              #ase
+                .overlay
+                  div
+                    p.no-margin-bottom Ash&eacute; Attire
+                    span.help-block Spreading diversity through clothing
+          .col-sm-4.wow.fadeIn(data-wow-delay='0.5s')
+            a.portfolio-link(href='./portfolio/neoscreen')
+              #neo
+                .overlay
+                  div
+                    p.no-margin-bottom NeoScreen Products
+                    span.help-block Innovative screen repair toolkit
+          .col-sm-4.wow.fadeIn(data-wow-delay='0.7s')
+            a.portfolio-link(href='./portfolio/wissahickon-track')
+              #track
+                .overlay
+                  div
+                    p.no-margin-bottom Wissahickon Track and Field
+                    span.help-block Faster than fast
+          .clearfix
+          br
+          br
+        .row.text-center
+          .col-xs-12.text-center
+            a.btn.btn-success.btn-lg(href='./portfolio') Our Portfolio
+    .jumbotron.half-page.transparent-bg.parallax-window.text-center.trianglify#services(data-parallax='scroll' data-speed='0.25' data-image-src='/img/milkyway.jpg')
+      .container
+        h1.text-light Our Services
+        p Need something special?  Drop us a line and we can work something out.
+        br
+        br
+        .row
+          .col-sm-4.wow.fadeIn
+            i.ion-code-working.text-12x
+            h2.text-light Custom Website Design
+            p.
+              We offer premium website design services, both with custom-code and Wordpress.  Our designs
+              are fully responsive and work on both mobile and desktop.
+          .col-sm-4.wow.fadeIn(data-wow-delay='0.3s')
+            i.ion-ios-search.text-12x
+            h2.text-light Search Engines (SEO)
+            p.
+              We'll boost your business's ranking on search engines, helping you to increase your sales and revenue.
+          .col-sm-4.wow.fadeIn(data-wow-delay='0.5s')
+            i.ion-folder.text-12x
+            h2.text-light Domain and Hosting
+            p We offer full domain setup and hosting maintenance for a small monthly fee.
+          .clearfix
+          br
+          br
+          a.btn.btn-transparent.btn-lg(href='./services') Our Services
+    include partials/footer
+
+block scripts
+  script.
+    var video = document.getElementById('video-bg');
+    video.playbackRate = 0.333;
+  script(src='/js/trianglify-0.3.1.min.js')
+  script.
+    function genTriangles() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var colorFunc = function(x, y) {
+        return 'hsl(0,0%,'+Math.floor(Math.abs(x*y*100))+'%)';
+      };
+      var pattern = Trianglify({
+        // in case the jumbotron is a bit bigger
+        height: height * 2,
+        width: width,
+        cell_size: 100,
+        color_function: colorFunc
+      });
+      var image = pattern.png();
+      var elements = [".trianglify"];
+      var afterElements = elements.map(function(el) {
+        return el + '::after';
+      });
+      var css = "<style>" +
+                  elements.toString() + " { " +
+                    "position: relative;" +
+                  "}" +
+                  afterElements.toString() + " {" +
+                    "content: '';" +
+                    "display: block;" +
+                    "z-index: -1;" +
+                    "position: absolute;" +
+                    "top: 0;" +
+                    "bottom: 0;" +
+                    "left: 0;" +
+                    "right: 0;" +
+                    "opacity: 0.4;" +
+                    "background: url(" + image + ");" +
+                  "}" +
+                "</style>";
+      $('head').append(css);
+    }
+    genTriangles();
+    $(window).resize(function() {
+      genTriangles();
+    });
+    

@@ -1,0 +1,67 @@
+extends layout
+
+block head
+  title Contact | Leung Enterprises Web Design Philadelphia
+  meta(name="description" content="Leung Enterprises, based in the Greater Philadelphia Area, was founded in September 2014 and has been making classy websites ever since.")
+
+block content
+  - var page = 'contact'
+  include partials/header
+  main
+    .jumbotron.full-page.light-bg.flex-center.cc-before-bg.background-before-pan.trianglify#contact-thanks
+      .container
+        i.fa.fa-envelope.animated.lightSpeedOut.text-12x
+        h2.text-light.line-1p5.
+          Thanks for your message!
+        p.
+          We'll get back to you ASAP.
+        br
+        br
+        a.btn.btn-success.btn-lg.wow.fadeIn(href='/') Go Back Home
+    include partials/footer
+
+block scripts
+  script(src='/js/trianglify-0.3.1.min.js')
+  script.
+    function genTriangles() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var colorFunc = function(x, y) {
+        return 'hsl(0,0%,'+Math.floor(Math.abs(x*y*100))+'%)';
+      };
+      var pattern = Trianglify({
+        // in case the jumbotron is a bit bigger
+        height: height * 1.3,
+        width: width,
+        cell_size: 100,
+        color_function: colorFunc
+      });
+      var image = pattern.png();
+      var elements = [".trianglify"];
+      var afterElements = elements.map(function(el) {
+        return el + '::after';
+      });
+      var css = "<style>" +
+                  elements.toString() + " { " +
+                    "position: relative;" +
+                  "}" +
+                  afterElements.toString() + " {" +
+                    "content: '';" +
+                    "display: block;" +
+                    "z-index: -1;" +
+                    "position: absolute;" +
+                    "top: 0;" +
+                    "bottom: 0;" +
+                    "left: 0;" +
+                    "right: 0;" +
+                    "opacity: 0.5;" +
+                    "background: url(" + image + ");" +
+                  "}" +
+                "</style>";
+      $('head').append(css);
+    }
+    genTriangles();
+    $(window).resize(function() {
+      genTriangles();
+    });
+    

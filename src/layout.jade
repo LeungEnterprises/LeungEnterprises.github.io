@@ -1,0 +1,42 @@
+doctype
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+html.no-js(lang='en')<!--<![endif]-->
+  head
+    meta(charset='utf-8')
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+        
+    link(rel="icon" href="/img/favicon-256.png")
+    
+    // build:css css/styles.css 
+    link(rel='stylesheet' href='/css/open-sans.css')
+    link(rel="stylesheet" href="/css/font-awesome-4.4.0.min.css")
+    link(rel="stylesheet" href="/css/ionicons-2.0.1.min.css")
+    link(rel="stylesheet" href="/css/bootstrap-3.3.5.min.css")
+    link(rel="stylesheet" href="/css/animate-3.4.0.min.css")
+    link(rel="stylesheet" href="/css/styles.css")
+    // endbuild 
+    
+    script(src="/js/modernizr-custom.min.js")
+    block head
+  body
+    #loader-overlay.flex-center
+      #loader
+    block content
+    // build:js js/scripts.js 
+    script(src="/js/jquery-2.1.4.min.js")
+    script(src="/js/bootstrap-3.3.5.min.js")
+    script(src="/js/parallax-1.3.1.min.js")
+    script(src="/js/wow-1.1.2.min.js")
+    script(src="/js/scripts.js")
+    // endbuild 
+    block scripts

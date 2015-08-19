@@ -1,0 +1,91 @@
+extends layout
+
+block head
+  title About | Leung Enterprises Web Design Philadelphia
+  meta(name="description" content="Leung Enterprises, based in the Greater Philadelphia Area, was founded in September 2014 and has been making classy websites ever since.")
+
+block content
+  - var page = 'about'
+  include partials/header
+  main
+    .jumbotron.flex-center.about.trianglify.half-page.cc-before-bg.background-before-pan
+      .container
+        .spacer-60
+        div
+          h1.text-light.text-uppercase.wow.fadeIn About
+          h2.text-light.wow.fadeIn(data-wow-delay='0.3s') &#8220;We are such stuff as dreams are made on.&#8221;&nbsp;&ndash;&nbsp;W. Shakespeare
+    .jumbotron.half-page.flex-center#intro-text
+      .container
+        h2.text-light.line-1p5.wow.fadeIn(data-wow-delay='0.3s').
+          Leung Enterprises, based in the Greater Philadelphia Area, was founded in September 2014 and has been making
+          classy websites ever since.  We offer a wide range of services to help you and your business engage with customers
+          and climb search engine rankings.
+    .jumbotron.full-page.flex-center.parallax-window.trianglify#about-detail(data-parallax='scroll' data-speed='0.25' data-image-src='/img/ccenter.jpg')
+      .container.text-center
+        h1.text-light Meet Leung Enterprises
+        .spacer-75
+        .row
+          .col-sm-4.col-xs-6
+            //- img.img-responsive.img-circle(src='http://placehold.it/500x500')
+            br
+            br
+            p.
+              #[b Nathan Leung] is a lead web designer and developer at Leung Enterprises
+          .col-sm-4.col-xs-6
+            //- img.img-responsive.img-circle(src='http://placehold.it/500x500')
+            br
+            br
+            p.
+              #[b Jason Shu] is a web designer and developer at Leung Enterprises
+          .col-sm-4.col-sm-offset-0.col-xs-6.col-xs-offset-3
+            //- img.img-responsive.img-circle(src='http://placehold.it/500x500')
+            br
+            br
+            p.
+              #[b Mohammed Rashid] is a design consultant at Leung Enterprises
+    include partials/footer
+
+block scripts
+  script(src='/js/trianglify-0.3.1.min.js')
+  script.
+    function genTriangles() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var colorFunc = function(x, y) {
+        return 'hsl(0,0%,'+Math.floor(Math.abs(x*y*100))+'%)';
+      };
+      var pattern = Trianglify({
+        // in case the jumbotron is a bit bigger
+        height: height * 2,
+        width: width,
+        cell_size: 100,
+        color_function: colorFunc
+      });
+      var image = pattern.png();
+      var elements = [".trianglify"];
+      var afterElements = elements.map(function(el) {
+        return el + '::after';
+      });
+      var css = "<style>" +
+                  elements.toString() + " { " +
+                    "position: relative;" +
+                  "}" +
+                  afterElements.toString() + " {" +
+                    "content: '';" +
+                    "display: block;" +
+                    "z-index: -1;" +
+                    "position: absolute;" +
+                    "top: 0;" +
+                    "bottom: 0;" +
+                    "left: 0;" +
+                    "right: 0;" +
+                    "opacity: 0.5;" +
+                    "background: url(" + image + ");" +
+                  "}" +
+                "</style>";
+      $('head').append(css);
+    }
+    genTriangles();
+    $(window).resize(function() {
+      genTriangles();
+    });
