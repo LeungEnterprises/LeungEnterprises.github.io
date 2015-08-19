@@ -30,6 +30,7 @@ Run `gulp production` to do the above (produce your files) and then serve the pr
 9. Then, run `git add .` and `git commit -m 'initial deploy'`.
 10. To deploy to gh-pages run `git push origin master`.
 11. Finally, to checkout back to the `dev` branch without pulling all the changes you made, run `git checkout -f dev`
+12. Remember when committing to the remote repo, don't commit to `master` but run `git push origin dev`.
 
 ## Social
 - Follow [@LeungEnterprise](http://twitter.com/LeungEnterprise) on Twitter

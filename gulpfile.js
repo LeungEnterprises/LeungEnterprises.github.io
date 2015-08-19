@@ -111,7 +111,7 @@ gulp.task('minify-img', function() {
     .pipe(gulp.dest('./dist/img'));
 });
 
-gulp.task('produce', ['clean', 'copy-fonts', 'copy-js', 'minify-img']);
+gulp.task('produce', ['clean', 'copy-fonts', 'copy-cname', 'copy-js', 'minify-img']);
 
 gulp.task('production', ['produce'], function() {
   harp.server('./dist', {
