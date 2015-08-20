@@ -1,10 +1,25 @@
 $(document).ready(function() {
+  // ie detection, their flexbox implementation is a bit wonky
+  function msieversion() {
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    return (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./));
+  }
+  var msie = msieversion();
+  if (msie) {
+    $('html').addClass('msie');
+    $('#loader').addClass('hidden');
+    $('#loader-overlay').append('<span class="text-5x text-light">&hellip;</span>')
+  }
+
   // preloader
   $(window).load(function() {
     $('#loader').fadeOut();
     $('#loader-overlay').delay(100).fadeOut('slow');
     $('body').delay(100).css({'overflow':'visible'});
   });
+
   // smooth scroll
   $(function() {
     $('a[href*=#]:not([href=#])').click(function() {
