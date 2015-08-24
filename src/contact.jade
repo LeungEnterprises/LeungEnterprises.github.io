@@ -40,7 +40,7 @@ block content
             br
             .row
               form.text-left(action='//formspree.io/hello@leung.enterprises' method='post')
-                input(type='hidden' name='_next' value="http://leung.enterprises/contact-thanks")
+                input(type='hidden' name='_next' value="http://www.leungenterprises.com/contact-thanks")
                 input(type='hidden' name='_subject' value="Leung Enterprises Web Design")
                 input(type='text' style="visibility: hidden; display: none;" name='_gotcha')
                 .form-group
@@ -53,10 +53,21 @@ block content
                   label(for="message") Your Message
                   textarea.form-control.input-lg#message(placeholder='Can ya hook a brotha up with a nice website?' name='message' rows='5' style="resize: vertical;")
                 .form-group
+                  input(type='hidden' name='userAgent')
+                  input(type='hidden' name='ipAddress')
                   button.btn.btn-success.btn-lg(type="submit") Send
     include partials/footer
 
 block scripts
+  script.
+    $(document).ready(function() {
+      $("input[name='userAgent']").val(navigator.userAgent);
+      $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
+        function(json) {
+          $("input[name='ipAddress']").val(json.ip);
+        }
+      );
+    });
   script(src='/js/trianglify-0.3.1.min.js')
   script.
     function genTriangles() {
