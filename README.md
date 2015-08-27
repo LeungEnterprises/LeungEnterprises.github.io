@@ -37,4 +37,4 @@ Run `gulp production` to do the above (produce your files) and then serve the pr
 - Read the [Leung Enterprises Blog](http://blog.leung.enterprises/)
 
 ## License
-  &copy; 2015 Leung Enterprises.  This repository is released under the [Creative Commons Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/).
+  &copy; 2015 Leung Enterprises.  For more details, see LICENSE.
