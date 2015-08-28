@@ -20,7 +20,7 @@ if page != 'contact'
       br
       br
       a.btn.btn-success.btn-lg(href='/contact') Send a Message
-footer.jumbotron.no-margin-bottom.dark-bg
+footer.jumbotron.no-margin-bottom.dark-bg(itemscope itemtype="http://schema.org/ProfessionalService")
   .container-fluid.text-center
     h1.logo
       span.leung Leung
@@ -28,11 +28,11 @@ footer.jumbotron.no-margin-bottom.dark-bg
     br
     br
     p.wow.fadeIn
-      | &copy; 2015 Leung Enterprises. &mdash; #[span.classy Another classy design&trade;]
+      | &copy; #[span(itemprop='foundingDate') 2014] - 2015 Leung Enterprises. &mdash; #[span.classy Another classy design&trade;]
       br
       br
       span.small
-        a(href='mailto:hello@leungenterprises.com') hello@leungenterprises.com
+        a(href='mailto:hello@leungenterprises.com' itemprop='email') hello@leungenterprises.com
       
     br
     .row.darker-bg.hidden-xs
@@ -50,8 +50,15 @@ footer.jumbotron.no-margin-bottom.dark-bg
             a(href='/contact') Contact
         ul.nav.navbar-nav.navbar-right.nav-bottom.no-margin-bottom
           li
+            link(itemprop='url' href='http://www.leungenterprises.com/')
             a(href="http://blog.leungenterprises.com/") Blog
           li
-            a(href='https://twitter.com/LeungEnterprise') #[i.fa.fa-twitter]
+            a(itemprop='sameAs' href='https://facebook.com/LeungEnterprises') #[i.fa.fa-facebook]
           li
-            a(href='https://github.com/LeungEnterprises') #[i.fa.fa-github]
+            a(itemprop='sameAs' href='https://twitter.com/LeungEnterprise') #[i.fa.fa-twitter]
+          li
+            a(itemprop='sameAs' href='https://plus.google.com/+LeungEnterprises') #[i.fa.fa-google-plus]
+          li
+            a(itemprop='sameAs' href='https://www.linkedin.com/company/leung-enterprises') #[i.fa.fa-linkedin]
+          li
+            a(itemprop='sameAs' href='https://github.com/LeungEnterprises') #[i.fa.fa-github]

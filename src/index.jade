@@ -48,7 +48,7 @@ block head
 block content
   - var page = 'home'
   include partials/header
-  main
+  main(itemscope itemtype="http://schema.org/ProfessionalService")
     #video-container
       video#video-bg(poster='/img/milkyway.jpg' autoplay loop)
         source(src="/img/milkyway.webm" type="video/webm")
@@ -57,16 +57,17 @@ block content
       .container
         div
           h1.text-light.text-uppercase.wow.fadeIn(data-wow-delay='0.3s') Need a classy website?
-          h2.text-light.wow.fadeIn(data-wow-delay='0.5s') Don't worry - Leung Enterprises can do that all, and more.
+          h2.text-light.wow.fadeIn(data-wow-delay='0.5s') Don't worry - #[span(itemprop="name") Leung Enterprises] can do that all, and more.
         div.paginate
           a(href='#intro-text')
             i.ion-chevron-down.fa-2x.wow.bounce(data-wow-iteration='2' data-wow-delay='0.7s')
     .jumbotron.half-page.flex-center#intro-text
       .container
-        h2.text-light.line-1p5.wow.fadeIn(data-wow-delay='0.3s').
-          Leung Enterprises is dedicated to helping you and your business succeed. 
-          We build affordable, responsive websites that drive sales and convert 
-          customers.  We're eager to work with you and can't wait to get started.
+        h2.text-light.line-1p5.wow.fadeIn(itemprop='description' data-wow-delay='0.3s').
+          Leung Enterprises is a #[span(itemprop='location') Philadelphia]-based web design and development shop 
+          dedicated to helping you and your business succeed. We build affordable, 
+          responsive websites that drive sales and convert customers.  We're eager 
+          to work with you and can't wait to get started.
         //- #[a(href='#contact-info') below].
     .jumbotron.full-page.parallax-window.trianglify#about(data-parallax='scroll' data-speed='0.25' data-image-src='/img/milkyway.jpg')
       .container.text-center
