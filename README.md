@@ -34,7 +34,7 @@ Run `gulp production` to do the above (produce your files) and then serve the pr
 
 ## Social
 - Follow [@LeungEnterprise](http://twitter.com/LeungEnterprise) on Twitter
-- Read the [Leung Enterprises Blog](http://blog.leung.enterprises/)
+- Read the [Leung Enterprises Blog](http://blog.leungenterprises.com/)
 
 ## License
   &copy; 2015 Leung Enterprises.  For more details, see LICENSE.
