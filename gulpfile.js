@@ -93,13 +93,18 @@ gulp.task('copy-cname', function() {
     .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('copy-sitemap', function() {
+  return gulp.src('./src/sitemap.xml')
+    .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('copy-readme', function() {
-  return gulp.src('./src/README.md')
+  return gulp.src('./README.md')
     .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('copy-license', function() {
-  return gulp.src('./src/LICENSE')
+  return gulp.src('./LICENSE')
     .pipe(gulp.dest('./dist'));
 });
 
@@ -121,7 +126,7 @@ gulp.task('minify-img', function() {
     .pipe(gulp.dest('./dist/img'));
 });
 
-gulp.task('produce', ['clean', 'copy-fonts', 'copy-cname', 'copy-readme', 'copy-license', 'copy-js', 'minify-img']);
+gulp.task('produce', ['clean', 'copy-fonts', 'copy-cname', 'copy-sitemap', 'copy-readme', 'copy-license', 'copy-js', 'minify-img']);
 
 gulp.task('production', ['produce'], function() {
   harp.server('./dist', {
