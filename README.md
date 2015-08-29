@@ -1,9 +1,9 @@
-# [Leung Enterprises](http://www.leungenterprises.com/) Homepage
+# [Leung Enterprises](https://www.leungenterprises.com/) Homepage
 v3.0.0
 
 Leung Enterprises is a web design and development firm located in Ambler, PA.  We make modern, responsive websites for individuals and businesses.
 
-Get started at [http://www.leungenterprises.com](http://www.leungenterprises.com/)!
+Get started at [https://www.leungenterprises.com](https://www.leungenterprises.com/)!
 
 ## Global Dependencies
 - [Gulp](http://gulpjs.com)
@@ -33,8 +33,8 @@ Run `gulp production` to do the above (produce your files) and then serve the pr
 12. Remember when committing to the remote repo, don't commit to `master` but run `git push origin dev`.
 
 ## Social
-- Follow [@LeungEnterprise](http://twitter.com/LeungEnterprise) on Twitter
-- Read the [Leung Enterprises Blog](http://blog.leungenterprises.com/)
+- Follow [@LeungEnterprise](https://twitter.com/LeungEnterprise) on Twitter
+- Read the [Leung Enterprises Blog](https://blog.leungenterprises.com/)
 
 ## License
   &copy; 2015 Leung Enterprises.  For more details, see LICENSE.
