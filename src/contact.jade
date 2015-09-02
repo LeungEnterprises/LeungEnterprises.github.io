@@ -39,23 +39,24 @@ block content
             br
             br
             .row
-              form.text-left(action='//formspree.io/hello@leungenterprises.com' method='post')
-                input(type='hidden' name='_next' value="https://www.leungenterprises.com/contact-thanks")
-                input(type='hidden' name='_subject' value="Leung Enterprises Web Design")
-                input(type='text' style="visibility: hidden; display: none;" name='_gotcha')
-                .form-group
-                  label.required(for="name") Your Name
-                  input.form-control.input-lg#name(type='text' name='name' placeholder='Name' required)
-                .form-group
-                  label.required(for="name") Your Email
-                  input.form-control.input-lg#email(type="email" name="_replyto" placeholder="someone@example.com" required)
-                .form-group
-                  label(for="message") Your Message
-                  textarea.form-control.input-lg#message(placeholder='Can ya hook a brotha up with a nice website?' name='message' rows='5' style="resize: vertical;")
-                .form-group
-                  input(type='hidden' name='userAgent')
-                  input(type='hidden' name='ipAddress')
-                  button.btn.btn-success.btn-lg(type="submit") Send
+              .col-xs-12
+                form.text-left(action='//formspree.io/hello@leungenterprises.com' method='post')
+                  input(type='hidden' name='_next' value="https://www.leungenterprises.com/contact-thanks")
+                  input(type='hidden' name='_subject' value="Leung Enterprises Web Design")
+                  input(type='text' style="visibility: hidden; display: none;" name='_gotcha')
+                  .form-group
+                    label.required(for="name") Your Name
+                    input.form-control.input-lg#name(type='text' name='name' placeholder='Name' required)
+                  .form-group
+                    label.required(for="name") Your Email
+                    input.form-control.input-lg#email(type="email" name="_replyto" placeholder="someone@example.com" required)
+                  .form-group
+                    label(for="message") Your Message
+                    textarea.form-control.input-lg#message(placeholder='Can ya hook a brotha up with a nice website?' name='message' rows='5' style="resize: vertical;")
+                  .form-group
+                    input(type='hidden' name='userAgent')
+                    input(type='hidden' name='ipAddress')
+                    button.btn.btn-success.btn-lg(type="submit") Send
     include partials/footer
 
 block scripts

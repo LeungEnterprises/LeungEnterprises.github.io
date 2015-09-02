@@ -31,13 +31,6 @@ block head
       background-size: cover;
       animation: pan 240s infinite;
     }
-    /*
-    .trianglify::before {
-      background: url('/img/galaxy.jpg');
-      background-size: cover;
-      animation: pan 120s infinite;
-    }
-    */
   //-
     style.
       .autoplay #video-bg {
@@ -74,7 +67,7 @@ block content
         video#video-bg(poster='/img/milkyway.jpg' autoplay loop)
           source(src="/img/milkyway.webm" type="video/webm")
           source(src="/img/milkyway.mp4" type="video/mp4")
-    .jumbotron.full-page.landing.trianglify.flex-center.before-bg
+    .jumbotron.full-page.landing.before-bg.trianglify.flex-center
       .container
         div
           h1.text-light.text-uppercase.wow.fadeIn(data-wow-delay='0.3s') Need a classy website?
@@ -202,24 +195,42 @@ block scripts
         color_function: colorFunc
       });
       var image = pattern.png();
-      var elements = [".trianglify"];
+      // ios safari is weird - it doesn't show trianglify with the main-bg in the back
+      // changing this to just the main-bg
+      var elements = ["#main-bg"];
       var afterElements = elements.map(function(el) {
         return el + '::after';
       });
+      /* iOS fix
+        var css = "<style>" +
+                    elements.toString() + " { " +
+                      "position: relative;" +
+                    "}" +
+                    afterElements.toString() + " {" +
+                      "content: '';" +
+                      "display: block;" +
+                      "z-index: -1;" +
+                      "position: absolute;" +
+                      "top: 0;" +
+                      "bottom: 0;" +
+                      "left: 0;" +
+                      "right: 0;" +
+                      "opacity: 0.7;" +
+                      "background: url(" + image + ");" +
+                    "}" +
+                  "</style>";
+      */
       var css = "<style>" +
-                  elements.toString() + " { " +
-                    "position: relative;" +
-                  "}" +
                   afterElements.toString() + " {" +
                     "content: '';" +
                     "display: block;" +
                     "z-index: -1;" +
-                    "position: absolute;" +
+                    "position: fixed;" +
                     "top: 0;" +
                     "bottom: 0;" +
                     "left: 0;" +
                     "right: 0;" +
-                    "opacity: 0.7;" +
+                    "opacity: 0.6;" +
                     "background: url(" + image + ");" +
                   "}" +
                 "</style>";

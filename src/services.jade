@@ -9,9 +9,6 @@ block head
       background-size: cover;
       background-position: center;
     }
-    #service-detail {
-      background: rgba(0,0,0,0.55);
-    }
 block content
   - var page = 'services'
   include partials/header
@@ -26,7 +23,7 @@ block content
       .container
         h2.text-light.line-1p5.wow.fadeIn(data-wow-delay='0.3s').
           We'll talk about what you need in your website, and we'll do it.  Our services are extensive and make the website process as hassle-free as possible.
-    .jumbotron.full-page.flex-center.parallax-window.trianglify#service-detail(data-parallax='scroll' data-speed='0.25' data-image-src='//i.imgur.com/hmzaSy4.jpg')
+    .jumbotron.full-page.flex-center.parallax-window.trianglify.services.before-bg
       .container.text-center
         h1.text-light Service Details
         .spacer-75
@@ -86,7 +83,7 @@ block scripts
                     "bottom: 0;" +
                     "left: 0;" +
                     "right: 0;" +
-                    "opacity: 0.5;" +
+                    "opacity: 0.6;" +
                     "background: url(" + image + ");" +
                   "}" +
                 "</style>";
