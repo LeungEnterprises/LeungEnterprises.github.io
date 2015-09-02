@@ -366,27 +366,14 @@ header.desktop
 
 .portfolio-link:hover
   text-decoration none
-#saffron
-  background-repeat no-repeat
-  background url('/img/saffron.jpg')
-#ase
-  background-repeat no-repeat
-  background url('/img/ashe.jpg')
-#neo
-  background-repeat no-repeat
-  background url('/img/neoscreen.jpg')
-#track
-  background-repeat no-repeat
-  background url('/img/track.png')
-#your
-  background-repeat no-repeat
-  background url('//i.imgur.com/pO2dX3b.jpg?1')
+
 #saffron, #ase, #neo, #track, #your
   width 100%
   height 180px // on mobile devices
   @media (min-width: 768px)
     height 220px // on desktops
   background-size cover
+  background-repeat no-repeat
   background-position top center
   @media (min-width: 768px)
     &.size-1p5x
@@ -403,6 +390,18 @@ header.desktop
     transition all 0.3s
   &:hover .overlay
     opacity 1
+
+#saffron
+  background-image url('/img/saffron.jpg')
+#ase
+  background-image url('/img/ashe.jpg')
+  background-position top left
+#neo
+  background-image url('/img/neoscreen.jpg')
+#track
+  background-image url('/img/track.png')
+#your
+  background-image url('//i.imgur.com/pO2dX3b.jpg?1')
 
 .visit-website
   display block
