@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 git checkout dev
-# gulp produce
+gulp produce
 
 echo "Please enter a commit message: "
 read commit_message
