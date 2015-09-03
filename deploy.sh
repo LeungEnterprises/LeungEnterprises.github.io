@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 git checkout dev
-gulp produce
+# gulp produce
 
 echo "Please enter a commit message: "
 read commit_message
 git add --all .
-git commit -m \"$commit_message\"
+git commit -m "\"$commit_message\""
 git push origin dev
 
 deploy_date=$(date +"%s")
@@ -34,5 +34,5 @@ rm -rf ../$folder_name
 echo "Removed dist folder"
 
 git add --all .
-git commit -m \"$commit_message\"
+git commit -m "\"$commit_message\""
 git push origin master
