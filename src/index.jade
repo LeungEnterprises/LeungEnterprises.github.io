@@ -27,9 +27,9 @@ block head
       left: 0;
       bottom: 0;
       right: 0;
-      background: url('/img/galaxy.jpg');
+      background: url('/img/zion.jpg');
       background-size: cover;
-      animation: pan 240s infinite;
+      animation: pan-middle 180s infinite;
     }
   //-
     style.
@@ -62,6 +62,7 @@ block content
   include partials/header
   main
     #main-bg
+      //- canvas#confetti
     //-
       #video-container
         video#video-bg(poster='/img/milkyway.jpg' autoplay loop)
@@ -176,6 +177,7 @@ block content
     include partials/footer
 
 block scripts
+  //- script(src="/js/birthday.js")
   script.
     // var video = document.getElementById('video-bg');
     // video.playbackRate = 0.333;
@@ -230,7 +232,7 @@ block scripts
                     "bottom: 0;" +
                     "left: 0;" +
                     "right: 0;" +
-                    "opacity: 0.6;" +
+                    "opacity: 0.45;" +
                     "background: url(" + image + ");" +
                   "}" +
                 "</style>";
