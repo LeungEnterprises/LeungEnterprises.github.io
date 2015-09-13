@@ -114,7 +114,7 @@ gulp.task('copy-fonts', function() {
 });
 
 gulp.task('copy-js', function() {
-  return gulp.src(['./src/js/modernizr-custom.min.js', './src/js/trianglify-0.3.1.min.js'])
+  return gulp.src(['./src/js/modernizr-custom.min.js', './src/js/trianglify-0.3.1.min.js', './src/js/birthday.js'])
     .pipe(gulp.dest('./dist/js'));
 });
 
