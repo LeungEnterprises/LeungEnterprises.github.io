@@ -1,8 +1,8 @@
 var gulp = require('gulp');
 
-var jade = require('gulp-jade');
-var stylus = require('gulp-stylus');
-var merge = require('merge-stream');
+var harp = require('harp'),
+    browserSync = require('browser-sync'),
+    reload = browserSync.reload;
 
 var shell = require('gulp-shell'),
     prettify = require('gulp-prettify'),
@@ -14,21 +14,45 @@ var shell = require('gulp-shell'),
     minifyHtml = require('gulp-minify-html'),
     del = require('del');
 
-gulp.task('jade', function() {
-  return gulp.src('./src/**/*.jade')
-    .pipe(jade({
-      basedir: './src'
-    }))
-    .pipe(gulp.dest('/build/'));
-})
+var ghPages = require('gulp-gh-pages');
 
-gulp.task('stylus', function() {
-  return gulp.src('./src/css/styles.styl')
-    .pipe(stylus())
-    .pipe(gulp.dest('./build/css/'));
-})
+// development
 
-gulp.task('compile', ['jade', 'stylus'], function() {
+// livereload implementation based on https://github.com/superhighfives/harp-gulp-browsersync-boilerplate
+gulp.task('dev', function() {
+  harp.server('./src', {
+    port: 9000
+  }, function() {
+    console.log('Non-browsersync server started at localhost:9000');
+    browserSync({
+      proxy: "localhost:9000",
+      open: false,
+      notify: {
+        styles: ['opacity: 0', 'position: absolute;']
+      }
+    });
+  });
+
+  gulp.watch('./src/css/styles.styl', function() {
+    reload('css/styles.css', { stream: true });
+  });
+
+  gulp.watch('./src/js/scripts.js', function() {
+    reload('js/scripts.js', { stream: true });
+  });
+
+  gulp.watch('./src/**/*.jade', function() {
+    reload();
+  });
+});
+
+// production
+
+gulp.task('compile', function() {
+  return gulp.src('')
+    .pipe(shell([
+      'harp compile ./src ./build'
+    ]));
 });
 
 gulp.task('useref', ['compile'], function() {
@@ -61,7 +85,7 @@ gulp.task('minify-html', ['useref'], function() {
 });
 
 gulp.task('clean', ['minify-css', 'minify-js', 'minify-html'], function(cb) {
-  del(['./build/**', './temp/**', './dist/partials/**', './dist/layout.html'], cb);
+  del(['./build/**', './temp/**'], cb);
 });
 
 gulp.task('copy-cname', function() {
@@ -103,3 +127,27 @@ gulp.task('minify-img', function() {
 });
 
 gulp.task('produce', ['clean', 'copy-fonts', 'copy-cname', 'copy-sitemap', 'copy-readme', 'copy-license', 'copy-js', 'minify-img']);
+
+gulp.task('production', ['produce'], function() {
+  harp.server('./dist', {
+    port: 8080
+  }, function() {
+    console.log('Server started at http://localhost:8080/');
+  });
+});
+
+gulp.task('deploy', ['produce'], function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages({
+      branch: 'master'
+    }));
+});
+
+gulp.task('default', function() {
+  console.log('\n');
+  console.log('run ', '\x1b[36m', 'gulp dev','\x1b[0m', ' to start a harp server with browsersync at localhost:3000');
+  console.log('run ', '\x1b[36m', 'gulp produce','\x1b[0m', ' to compile and minify all your files');
+  console.log('run ', '\x1b[36m', 'gulp production','\x1b[0m', ' to produce your files and serve them at localhost:8080');
+  console.log('run ', '\x1b[36m', 'gulp deploy','\x1b[0m', ' to produce your files and send them up to the github repository');
+  console.log('\n');
+});

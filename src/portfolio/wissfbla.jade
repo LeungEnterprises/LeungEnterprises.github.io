@@ -1,11 +1,11 @@
 extends ../layout
 
 block head
-  title NeoScreen Products | Leung Enterprises Web Design Philadelphia
-  meta(name="description" content="Building NeoScreen's website required the usage of modern web design trends to impart the innovation of NeoScreen.  Leung Enterprises was able to deliver a product that showcased NeoScreen Product's innovative technology.")
+  title Wissahickon FBLA | Leung Enterprises Web Design Philadelphia
+  meta(name="description" content="Wissahickon FBLA's website needed to be accessible by a diverse set of devices yet still be pleasing and well-designed.")
   style.
-    .neoscreen::before {
-      background: url('/img/iphone.jpg');
+    .wissfbla::before {
+      background: url('/img/business.jpg');
       background-size: cover;
       background-position: 70%;
     }
@@ -14,29 +14,29 @@ block content
   - var page = 'portfolio'
   include ../partials/header
   main
-    .jumbotron.flex-center.transparent-bg.half-page.neoscreen.trianglify.cc-before-bg
+    .jumbotron.flex-center.transparent-bg.half-page.wissfbla.trianglify.cc-before-bg
       .container
         .spacer-60
         div
-          h1.text-light.text-uppercase.wow.fadeIn NeoScreen Products
+          h1.text-light.text-uppercase.wow.fadeIn Wiss FBLA
           h2.text-light.wow.fadeIn(data-wow-delay='0.3s').
-            An innovative new way to fix your broken phone screen.
+            Wissahickon High School's business education club
     .jumbotron.half-page.light-bg
       .container-fluid
         br
         br
         .row.wow.fadeIn
           .col-md-6
-            a(href='https://demo.leungenterprises.com/neoscreen' target='_blank')
-              img.img-responsive.box-shadow(src="/img/neoscreen.jpg")
+            a(href='http://wissfbla.com' target='_blank')
+              img.img-responsive.box-shadow(src="/img/fbla.png")
           .col-md-5.col-md-offset-1
-            h2 Try NeoScreen
+            h2 Join FBLA
             p.
-              The main priority in creating NeoScreen's website was mobile compatibility.  We created a
-              site that not only worked on mobile, but looked great too.  Complemented with our careful
-              selection of images, NeoScreen's website was a beautiful design.
+              Wissahickon FBLA's website needed to be engaging, informative, and most important of all,
+              encourage prospective members to sign up for the club.  The site's clean, usable design
+              facilitates this and makes for an effective website.
             br
-            a.btn.btn-info.visit-website(href='https://demo.leungenterprises.com/neoscreen' target='_blank') View Website&nbsp;&nbsp;#[i.ion-forward]
+            a.btn.btn-info.visit-website(href='http://www.wissfbla.com/' target='_blank') View Website&nbsp;&nbsp;#[i.ion-forward]
         .clearfix
         .col-md-12.text-center
           br
@@ -46,7 +46,7 @@ block content
         .clearfix
         br
         br
-    .jumbotron.full-page.parallax-window.flex-center.neoscreen(data-parallax='scroll' data-speed='0.25' data-image-src='/img/iphone.jpg')
+    .jumbotron.full-page.parallax-window.flex-center.wissfbla(data-parallax='scroll' data-speed='0.25' data-image-src='/img/business.jpg')
       .container
         //-
           .testimonial-container.row
@@ -76,7 +76,7 @@ block scripts
         color_function: colorFunc
       });
       var image = pattern.png();
-      var elements = [".neoscreen"];
+      var elements = [".wissfbla"];
       var afterElements = elements.map(function(el) {
         return el + '::after';
       });
