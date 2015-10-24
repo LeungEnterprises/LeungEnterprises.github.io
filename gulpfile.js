@@ -19,16 +19,22 @@ gulp.task('jade', function() {
     .pipe(jade({
       basedir: './src'
     }))
-    .pipe(gulp.dest('/build/'));
+    .pipe(gulp.dest('./build'));
 })
 
 gulp.task('stylus', function() {
   return gulp.src('./src/css/styles.styl')
     .pipe(stylus())
-    .pipe(gulp.dest('./build/css/'));
-})
+    .pipe(gulp.dest('./build/css'));
+});
 
-gulp.task('compile', ['jade', 'stylus'], function() {
+gulp.task('pre-copy-js', function() {
+  // For useref
+  return gulp.src('./src/js/*.js')
+    .pipe(gulp.dest('./build/js'));
+});
+
+gulp.task('compile', ['jade', 'stylus', 'pre-copy-js'], function() {
 });
 
 gulp.task('useref', ['compile'], function() {
@@ -42,13 +48,13 @@ gulp.task('useref', ['compile'], function() {
 });
 
 gulp.task('minify-css', ['useref'], function() {
-  return gulp.src('./temp/css/styles.css')
+  return gulp.src('./temp/css/dist.css')
     .pipe(minifyCss())
     .pipe(gulp.dest('./dist/css'));
 });
 
 gulp.task('minify-js', ['useref'], function() {
-  return gulp.src('./temp/js/scripts.js')
+  return gulp.src('./temp/js/dist.js')
     .pipe(uglify())
     .pipe(gulp.dest('./dist/js'));
 });
@@ -61,7 +67,7 @@ gulp.task('minify-html', ['useref'], function() {
 });
 
 gulp.task('clean', ['minify-css', 'minify-js', 'minify-html'], function(cb) {
-  del(['./build/**', './temp/**', './dist/partials/**', './dist/layout.html'], cb);
+  // del(['./build/**', './temp/**', './dist/partials/**', './dist/layout.html'], cb);
 });
 
 gulp.task('copy-cname', function() {
