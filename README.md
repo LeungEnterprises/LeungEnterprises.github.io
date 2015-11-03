@@ -1,3 +1,5 @@
+NOTE: This is the old codebase; the newest version is available at:  https://github.com/LeungEnterprises/leungenterprises.github.io
+
 # [Leung Enterprises](https://www.leungenterprises.com/) Homepage
 v3.0.0
 
