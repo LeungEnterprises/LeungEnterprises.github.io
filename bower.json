@@ -1,0 +1,31 @@
+{
+  "name": "leung-enterprises-www-src",
+  "description": "source code of the Leung Enterprises Homepage",
+  "main": "",
+  "authors": [
+    "Leung Enterprises"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/LeungEnterprises/www-src",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "Ionicons": "ionicons#~2.0.1",
+    "font-awesome": "~4.4.0",
+    "wow": "wowjs#~1.1.2",
+    "animate.css": "~3.4.0",
+    "parallax.js": "~1.3.2",
+    "trianglify": "~0.3.1",
+    "open-sans-fontface": "~1.4.2",
+    "html5shiv": "~3.7.3"
+  }
+}

@@ -1,0 +1,107 @@
+extends /_layout
+
+block vars
+  - page = 'portfolio'
+
+block head
+  title Wissahickon FBLA | Leung Enterprises Web Design Philadelphia
+  meta(name="description" content="Wissahickon FBLA's website needed to be accessible by a diverse set of devices yet still be pleasing and well-designed.")
+  style.
+    .wissfbla::before {
+      background: url('/img/business.jpg');
+      background-size: cover;
+      background-position: 70%;
+    }
+
+block content
+  main
+    .jumbotron.flex-center.transparent-bg.half-page.wissfbla.trianglify.cc-before-bg
+      .container
+        .spacer-60
+        div
+          h1.text-light.text-uppercase.wow.fadeIn Wiss FBLA
+          h2.text-light.wow.fadeIn(data-wow-delay='0.3s').
+            Wissahickon High School's business education club
+    .jumbotron.half-page.light-bg
+      .container-fluid
+        br
+        br
+        .row.wow.fadeIn
+          .col-md-6
+            a(href='http://wissfbla.com' target='_blank')
+              img.img-responsive.box-shadow(src="/img/portfolio/fbla.png")
+          .col-md-5.col-md-offset-1
+            h2 Join FBLA
+            p.
+              Wissahickon FBLA's website needed to be engaging, informative, and most important of all,
+              encourage prospective members to sign up for the club.  The site's clean, usable design
+              facilitates this and makes for an effective website.
+            br
+            a.btn.btn-info.visit-website(href='http://www.wissfbla.com/' target='_blank') View Website&nbsp;&nbsp;#[i.ion-forward]
+        .clearfix
+        .col-md-12.text-center
+          br
+          br
+          br
+          a.btn.btn-success.btn-lg(href='/portfolio') Back to Portfolio
+        .clearfix
+        br
+        br
+    .jumbotron.full-page.parallax-window.flex-center.wissfbla(data-parallax='scroll' data-speed='0.25' data-image-src='/img/business.jpg')
+      .container
+        //-
+          .testimonial-container.row
+            .col-md-2.text-right
+              i.quote-left
+            .col-md-10
+              p.testimonial.
+                Wissahickon
+                <br><br>
+                #[span.small.text-style-normal &ndash; Mohammed Rashid, CEO of Ashé Attire]
+    
+block scripts
+  script(src='/vendor/trianglify/dist/trianglify.min.js')
+  script.
+    function genTriangles() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var colorFunc = function(x, y) {
+        return 'hsl(0,0%,'+Math.floor(Math.abs(x*y*100))+'%)';
+      };
+      var pattern = Trianglify({
+        // in case the jumbotron is a bit bigger
+        height: height * 1.3,
+        width: width,
+        cell_size: 100,
+        color_function: colorFunc
+      });
+      var image = pattern.png();
+      var elements = [".wissfbla"];
+      var afterElements = elements.map(function(el) {
+        return el + '::after';
+      });
+      var css = "<style id='trianglify-styles'>" +
+                  elements.toString() + " { " +
+                    "position: relative;" +
+                  "}" +
+                  afterElements.toString() + " {" +
+                    "content: '';" +
+                    "display: block;" +
+                    "z-index: -1;" +
+                    "position: absolute;" +
+                    "top: 0;" +
+                    "bottom: 0;" +
+                    "left: 0;" +
+                    "right: 0;" +
+                    "opacity: 0.6;" +
+                    "background: url(" + image + ");" +
+                  "}" +
+                "</style>";
+      $('head').append(css);
+    }
+    genTriangles();
+    $(window).resize(function() {
+      // $('#trianglify-styles').(jquery function to remove element)
+      genTriangles();
+    });
+    

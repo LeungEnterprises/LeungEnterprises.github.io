@@ -1,0 +1,214 @@
+/**
+ * Utility classes and functions
+ */
+
+// Forces a px or rem unit
+px(num)
+  num + 0px
+  
+rem(num)
+  num + 0rem
+
+// Text styles
+.text-style-normal
+  font-style normal
+  
+.text-light
+  font-weight 300 !important
+  
+.text-normal
+  font-weight 400 !important
+  
+.text-semibold
+  font-weight 600 !important
+  
+.text-small-caps
+  font-variant small-caps !important
+  
+.text-dark-color
+  color #333 !important
+
+// Creates text size classes
+for i in 1..15
+  
+  .text-{i}x
+    font-size rem(i) !important
+    
+  .spacer-{i * 5}
+    display block
+    height px(i * 5)
+    width 100%
+    
+// Classes for removing margin and padding
+.no-margin-bottom
+  margin-bottom 0 !important
+  
+.no-padding
+  padding 0 !important
+  
+.no-padding-bottom
+  padding-bottom 0 !important
+  
+.no-padding-top
+  padding-top 0 !important
+  
+.no-padding-sides
+  padding-left 0 !important
+  padding-right 0 !important
+  
+.row.nopadding
+  
+  & > .col-sm-4
+    padding 0 !important
+
+.row.no-padding-sides
+  
+  .col-sm-4, .col-sm-6 ,.col-sm-8
+    padding-left 0 !important
+    padding-right 0 !important
+    
+// Flexbox Classes
+// Default flex-center behavior, credits to https://css-tricks.com/centering-in-the-unknown/
+*,
+.no-flexbox,
+.msie
+  
+  .flex-center
+    
+    &::before
+      content ''
+      display inline-block
+      height 100%
+      vertical-align middle
+      
+    & > *
+      display inline-block
+      vertical-align middle
+      
+.flexbox .flex-center
+  display flex
+  align-items center
+  justify-content center
+  text-align center
+    
+// Background classes
+.before-bg
+  background transparent
+  
+.before-bg::before
+  content ''
+  display block
+  z-index -1
+  position absolute
+  top 0
+  bottom 0
+  left 0
+  right 0
+  
+.transparent-bg
+  background transparent !important
+  color #eee !important;
+  
+.cc-before-bg
+  @extend .transparent-bg
+  
+.cc-before-bg::before
+  @extend .before-bg::before
+  background url('/img/ccenter.jpg')
+  
+.dark-bg
+  background #333 !important
+  color #eee !important
+  
+.darker-bg
+  background #282828 !important
+  color #eee !important
+  
+.light-bg
+  background #eee !important
+  color #333 !important
+  
+.white-bg
+  background #fff !important
+  color #333 !important
+  
+.dark-tint-bg
+  background rgba(black,0.3) !important
+  color #eee !important
+    
+// Animations and background animation classes
+@keyframes pan
+  0%, 100%
+    background-position top left
+  50%
+    background-position bottom right
+    
+@keyframes pan-middle
+  0%, 100%
+    background-position center center
+  33.333%
+    background-position bottom right
+  66.666%
+    background-position top left
+    
+.background-pan
+  background-size cover !important
+  background-position top left
+  animation pan 60s infinite !important
+  animation-timing-function linear !important
+  
+.background-before-pan::before
+  background-size cover !important
+  background-position top left
+  animation pan 60s infinite !important
+  animation-timing-function linear !important
+  
+.background-before-pan-30::before
+  background-size cover !important
+  background-position top left
+  animation pan 30s infinite !important
+  animation-timing-function linear !important
+  
+@keyframes rainbowText
+  0%, 100%
+    color salmon
+  17%
+    color orange
+  33%
+    color yellow
+  50%
+    color lime
+  67%
+    color lightblue
+  83%
+    color magenta
+    
+// Miscellaneous
+.logo
+  font-weight 300
+  text-transform uppercase
+  .leung, .enterprises
+    display block
+  .leung
+    position relative
+    top 8px
+    font-size 48px
+  .enterprises
+    font-size 25px
+  @media (min-width: 768px)
+    .leung
+      top 17px
+      font-size 96px
+    .enterprises
+      font-size 50px
+.img-bw
+  filter unquote('grayscale(90%) contrast(120%)') !important
+.img-sepia
+  filter unquote('sepia(90%) contrast(120%)') !important
+    
+.line-1p5
+  line-height 1.5 !important
+.box-shadow
+  box-shadow none
+  // no box shadow for now
+  // box-shadow 0px 1px 6px black

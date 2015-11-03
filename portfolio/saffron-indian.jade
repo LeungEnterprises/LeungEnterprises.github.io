@@ -1,0 +1,107 @@
+extends /_layout
+
+block vars
+  - page = 'portfolio'
+
+block head
+  title Saffron Indian Kitchen | Leung Enterprises Web Design Philadelphia
+  meta(name="description" content="Building Saffron's website required attention to detail and maximum compatibility.  Leung Enterprises implemented multiple workarounds to support browsers such as IE, allowing Saffron to have maximum visibility on the web.")
+  style.
+    .saffron::before {
+      background: url('/img/naan.jpg');
+      background-size: cover;
+      background-position: 70%;
+    }
+
+block content
+  main
+    .jumbotron.flex-center.transparent-bg.half-page.saffron.cc-before-bg
+      .container
+        .spacer-60
+        div
+          h1.text-light.text-uppercase.wow.fadeIn Saffron Indian Kitchen
+          h2.text-light.wow.fadeIn(data-wow-delay='0.3s').
+            A fine Indian restaurant with locations in Ambler and Bala Cynwyd, PA.
+    .jumbotron.half-page.light-bg
+      .container-fluid
+        br
+        br
+        .row.wow.fadeIn
+          .col-md-6
+            a(href='http://www.saffronofphilly.com' target='_blank')
+              img.img-responsive.box-shadow(src="/img/portfolio/saffron.jpg" target='_blank')
+          .col-md-5.col-md-offset-1
+            h2 The Art of Blending Spices
+            p.
+              We created a creative, unique, and mobile-friendly website for Saffron, while also maintaining maximum 
+              compatibility for older browsers.  The unique format of the website allows for Saffron's cuisine to
+              shine and for information to be conveyed clearly, with no detriment to either.  A carefully selected font pairing complements the
+              images and completes the website.
+            br
+            a.btn.btn-info.visit-website(href='http://www.saffronofphilly.com' target='_blank') Visit Website&nbsp;&nbsp;#[i.ion-forward]
+        .clearfix
+        .col-md-12.text-center
+          br
+          br
+          br
+          a.btn.btn-success.btn-lg(href='/portfolio') Back to Portfolio
+        .clearfix
+        br
+        br
+    .jumbotron.full-page.parallax-window.flex-center.saffron(data-parallax='scroll' data-speed='0.25' data-image-src='/img/naan.jpg')
+      .container
+        .testimonial-container.row
+          .col-md-2.text-right
+            i.quote-left
+          .col-md-10
+            p.testimonial.
+              Delivered a very classy and sophisticated web site, exceeded our expectations.
+              <br><br>
+              #[span.small.text-style-normal &ndash; Rahul Bhatia, Owner of Saffron Indian Kitchen]
+    
+block scripts
+  script(src='/vendor/trianglify/dist/trianglify.min.js')
+  script.
+    function genTriangles() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var colorFunc = function(x, y) {
+        return 'hsl(0,0%,'+Math.floor(Math.abs(x*y*100))+'%)';
+      };
+      var pattern = Trianglify({
+        // in case the jumbotron is a bit bigger
+        height: height * 1.3,
+        width: width,
+        cell_size: 100,
+        color_function: colorFunc
+      });
+      var image = pattern.png();
+      var elements = [".saffron"];
+      var afterElements = elements.map(function(el) {
+        return el + '::after';
+      });
+      var css = "<style id='trianglify-styles'>" +
+                  elements.toString() + " { " +
+                    "position: relative;" +
+                  "}" +
+                  afterElements.toString() + " {" +
+                    "content: '';" +
+                    "display: block;" +
+                    "z-index: -1;" +
+                    "position: absolute;" +
+                    "top: 0;" +
+                    "bottom: 0;" +
+                    "left: 0;" +
+                    "right: 0;" +
+                    "opacity: 0.6;" +
+                    "background: url(" + image + ");" +
+                  "}" +
+                "</style>";
+      $('head').append(css);
+    }
+    genTriangles();
+    $(window).resize(function() {
+      // $('#trianglify-styles').(jquery function to remove element)
+      genTriangles();
+    });
+    

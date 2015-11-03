@@ -1,0 +1,107 @@
+extends /_layout
+
+block vars
+  - page = 'portfolio'
+
+block head
+  title NeoScreen Products | Leung Enterprises Web Design Philadelphia
+  meta(name="description" content="Building NeoScreen's website required the usage of modern web design trends to impart the innovation of NeoScreen.  Leung Enterprises was able to deliver a product that showcased NeoScreen Product's innovative technology.")
+  style.
+    .neoscreen::before {
+      background: url('/img/iphone.jpg');
+      background-size: cover;
+      background-position: 70%;
+    }
+
+block content
+  main
+    .jumbotron.flex-center.transparent-bg.half-page.neoscreen.trianglify.cc-before-bg
+      .container
+        .spacer-60
+        div
+          h1.text-light.text-uppercase.wow.fadeIn NeoScreen Products
+          h2.text-light.wow.fadeIn(data-wow-delay='0.3s').
+            An innovative new way to fix your broken phone screen.
+    .jumbotron.half-page.light-bg
+      .container-fluid
+        br
+        br
+        .row.wow.fadeIn
+          .col-md-6
+            a(href='https://demo.leungenterprises.com/neoscreen' target='_blank')
+              img.img-responsive.box-shadow(src="/img/portfolio/neoscreen.jpg")
+          .col-md-5.col-md-offset-1
+            h2 Try NeoScreen
+            p.
+              The main priority in creating NeoScreen's website was mobile compatibility.  We created a
+              site that not only worked on mobile, but looked great too.  Complemented with our careful
+              selection of images, NeoScreen's website was a beautiful design.
+            br
+            a.btn.btn-info.visit-website(href='https://demo.leungenterprises.com/neoscreen' target='_blank') View Website&nbsp;&nbsp;#[i.ion-forward]
+        .clearfix
+        .col-md-12.text-center
+          br
+          br
+          br
+          a.btn.btn-success.btn-lg(href='/portfolio') Back to Portfolio
+        .clearfix
+        br
+        br
+    .jumbotron.full-page.parallax-window.flex-center.neoscreen(data-parallax='scroll' data-speed='0.25' data-image-src='/img/iphone.jpg')
+      .container
+        //-
+          .testimonial-container.row
+            .col-md-2.text-right
+              i.quote-left
+            .col-md-10
+              p.testimonial.
+                Wissahickon
+                <br><br>
+                #[span.small.text-style-normal &ndash; Mohammed Rashid, CEO of Ashé Attire]
+    
+block scripts
+  script(src='/vendor/trianglify/dist/trianglify.min.js')
+  script.
+    function genTriangles() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var colorFunc = function(x, y) {
+        return 'hsl(0,0%,'+Math.floor(Math.abs(x*y*100))+'%)';
+      };
+      var pattern = Trianglify({
+        // in case the jumbotron is a bit bigger
+        height: height * 1.3,
+        width: width,
+        cell_size: 100,
+        color_function: colorFunc
+      });
+      var image = pattern.png();
+      var elements = [".neoscreen"];
+      var afterElements = elements.map(function(el) {
+        return el + '::after';
+      });
+      var css = "<style id='trianglify-styles'>" +
+                  elements.toString() + " { " +
+                    "position: relative;" +
+                  "}" +
+                  afterElements.toString() + " {" +
+                    "content: '';" +
+                    "display: block;" +
+                    "z-index: -1;" +
+                    "position: absolute;" +
+                    "top: 0;" +
+                    "bottom: 0;" +
+                    "left: 0;" +
+                    "right: 0;" +
+                    "opacity: 0.6;" +
+                    "background: url(" + image + ");" +
+                  "}" +
+                "</style>";
+      $('head').append(css);
+    }
+    genTriangles();
+    $(window).resize(function() {
+      // $('#trianglify-styles').(jquery function to remove element)
+      genTriangles();
+    });
+    

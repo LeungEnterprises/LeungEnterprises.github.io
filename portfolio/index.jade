@@ -1,0 +1,121 @@
+extends /_layout
+
+block vars
+  - page = 'portfolio'
+
+block head
+  title Portfolio | Leung Enterprises Web Design Philadelphia
+  meta(name="description" content="The Leung Enterprises portfolio of modern and responsive web site designs comprises of Philadelphia clients whose industries range from unique apparel to fine dining.")
+  style.
+    .portfolio::before {
+      background: url('/img/notebook.jpg');
+      background-size: cover;
+      background-position: 70%;
+    }
+block content
+  main
+    .jumbotron.flex-center.portfolio.half-page.cc-before-bg.trianglify
+      .container
+        .spacer-60
+        div
+          h1.text-light.text-uppercase.wow.fadeIn Portfolio
+          h2.text-light.wow.fadeIn(data-wow-delay='0.2s') A selection of our classiest work.
+    .jumbotron.full-page.light-bg.no-padding
+      .container-fluid
+        .row.no-padding-sides
+          .col-sm-6.wow.fadeIn(data-wow-delay='0.4s')
+            a.portfolio-link(href='./lgrunners')
+              #lgrunners.size-1p5x
+                .overlay
+                  div
+                    p.no-margin-bottom LG Runners
+                    span.help-block Community running organization
+          .col-sm-6.wow.fadeIn(data-wow-delay='0.6s')
+            a.portfolio-link(href='./saffron-indian')
+              #saffron.size-1p5x
+                .overlay
+                  div
+                    p.no-margin-bottom Saffron Indian Kitchen
+                    span.help-block Fine Indian dining in Ambler and Bala Cynwyd
+          .col-sm-6.wow.fadeIn(data-wow-delay='0.2s')
+            a.portfolio-link(href='./wissahickon-track')
+              #track.size-1p5x
+                .overlay
+                  div
+                    p.no-margin-bottom Wissahickon Track and Field
+                    span.help-block Faster than fast
+          .col-sm-6.wow.fadeIn(data-wow-delay='0.4s')
+            a.portfolio-link(href='./neoscreen')
+              #neo.size-1p5x
+                .overlay
+                  div
+                    p.no-margin-bottom NeoScreen Products
+                    span.help-block Innovative screen repair toolkit
+          .col-sm-6.wow.fadeIn(data-wow-delay='0.2s')
+            a.portfolio-link(href='./ashe-attire')
+              #ase.size-1p5x
+                .overlay
+                  div
+                    p.no-margin-bottom Ash&eacute; Attire
+                    span.help-block Spreading diversity through clothing
+          .col-sm-6.wow.fadeIn(data-wow-delay='0.4s')
+            a.portfolio-link(href='./wissfbla')
+              #fbla.size-1p5x
+                .overlay
+                  div
+                    p.no-margin-bottom Wissahickon FBLA
+                    span.help-block Business education organization
+          //-
+            .col-sm-6.wow.fadeIn(data-wow-delay='0.7s')
+              a.portfolio-link(href='./contact')
+                #your.size-1p5x
+                  .overlay
+                    div
+                      p.no-margin-bottom Your website could be here
+                      span.help-block We're eager to work with you.  Contact us today!
+
+block scripts
+  script(src='/vendor/trianglify/dist/trianglify.min.js')
+  script.
+    function genTriangles() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var colorFunc = function(x, y) {
+        return 'hsl(0,0%,'+Math.floor(Math.abs(x*y*100))+'%)';
+      };
+      var pattern = Trianglify({
+        // in case the jumbotron is a bit bigger
+        height: height * 1.3,
+        width: width,
+        cell_size: 100,
+        color_function: colorFunc
+      });
+      var image = pattern.png();
+      var elements = [".trianglify"];
+      var afterElements = elements.map(function(el) {
+        return el + '::after';
+      });
+      var css = "<style>" +
+                  elements.toString() + " { " +
+                    "position: relative;" +
+                  "}" +
+                  afterElements.toString() + " {" +
+                    "content: '';" +
+                    "display: block;" +
+                    "z-index: -1;" +
+                    "position: absolute;" +
+                    "top: 0;" +
+                    "bottom: 0;" +
+                    "left: 0;" +
+                    "right: 0;" +
+                    "opacity: 0.5;" +
+                    "background: url(" + image + ");" +
+                  "}" +
+                "</style>";
+      $('head').append(css);
+    }
+    genTriangles();
+    $(window).resize(function() {
+      genTriangles();
+    });
+    

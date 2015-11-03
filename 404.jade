@@ -1,0 +1,78 @@
+extends /_layout
+
+block vars
+  - page = '404'
+
+block head
+  title 404 - Page Not Found - Leung Enterprises
+  style.
+    #four04::before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: -1;
+      background: url("/img/lonetree.jpg");
+      background-size: cover;
+    }
+
+block content
+  .jumbotron.full-page.flex-center.trianglify#four04
+    .container
+      h1.wow.fadeIn.text-light.text-10x 404
+      p.wow.fadeIn(data-wow-delay='0.3s').
+        "Not all those who wander are lost."<br>
+        - J.R.R. Tolkien
+      br
+      br
+      br
+      .wow.fadeIn(data-wow-delay='0.3s')
+        a.btn.btn-transparent.btn-lg.wow.bounce(href='./' data-wow-delay='0.6s') Back to Home
+
+block scripts
+  script(src="/vendor/trianglify/dist/trianglify.min.js")
+  script.
+    function genTriangles() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var colorFunc = function(x, y) {
+        return 'hsl(0,0%,'+Math.floor(Math.abs(x*y*100))+'%)';
+      };
+      var pattern = Trianglify({
+        // in case the jumbotron is a bit bigger
+        height: height * 2,
+        width: width,
+        cell_size: 100,
+        color_function: colorFunc
+      });
+      var image = pattern.png();
+      var elements = [".trianglify"];
+      var afterElements = elements.map(function(el) {
+        return el + '::after';
+      });
+      var css = "<style>" +
+                  elements.toString() + " { " +
+                    "position: relative;" +
+                  "}" +
+                  afterElements.toString() + " {" +
+                    "content: '';" +
+                    "display: block;" +
+                    "z-index: -1;" +
+                    "position: absolute;" +
+                    "top: 0;" +
+                    "bottom: 0;" +
+                    "left: 0;" +
+                    "right: 0;" +
+                    "opacity: 0.5;" +
+                    "background: url(" + image + ");" +
+                  "}" +
+                "</style>";
+      $('head').append(css);
+    }
+    genTriangles();
+    $(window).resize(function() {
+      genTriangles();
+    });

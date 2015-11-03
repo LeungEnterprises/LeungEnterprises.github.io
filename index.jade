@@ -1,0 +1,249 @@
+extends /_layout
+
+block vars
+  - page = 'home'
+
+block head
+  title Leung Enterprises | Best Web Design Philadelphia, PA
+  meta(name="description" content="Leung Enterprises is a Philly-based web design and development shop.  We build modern, responsive websites that work great on all platforms.")
+  link(href="https://www.leungenterprises.com/" rel="canonical")
+
+  meta(property="fb:page_id" content="1192958917396758")
+  meta(property="og:title" content="Best Web Design Philadelphia, PA | Leung Enterprises")
+  meta(property="og:description" content="Leung Enterprises is a Philly-based web design and development shop.  We build modern, responsive websites that work great on all platforms.")
+  meta(property="og:url" content="https://www.leungenterprises.com")
+  meta(property="og:site_name" content="Leung Enterprises Web Design Philadelphia")
+  meta(property="og:type" content="website")
+  meta(property="og:image" content="https://www.leungenterprises.com/img/leung.jpg")
+    
+  meta(name="twitter:card" content="summary")
+  meta(name="twitter:url" content="https://www.leungenterprises.com")
+  meta(name="twitter:title" content="Best Web Design Philadelphia, PA | Leung Enterprises") 
+  meta(name="twitter:description" content="Leung Enterprises is a Philly-based web design and development shop.  We build modern, responsive websites that work great on all platforms.")
+  meta(name="twitter:image" content="https://www.leungenterprises.com/img/leung.jpg")
+  meta(name="twitter:site" content="@LeungEnterprise")
+  style.
+    #main-bg {
+      z-index: -1;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: url('/img/zion.jpg');
+      background-size: cover;
+      animation: pan-middle 180s infinite;
+    }
+  //- No more birthday :(
+  //- script(src="//my.hellobar.com/d852a91b7d22ab42b8518c6324c342be0dfbcf22.js" type="text/javascript" charset="utf-8" async="async")
+  //-
+    style.
+      .autoplay #video-bg {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+        z-index: -1;
+      }
+      .no-autoplay #video-bg {
+        display: none;
+      }
+      .no-autoplay #video-container {
+        background: url('/img/milkyway.jpg');
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+      }
+
+block content
+  main
+    #main-bg
+      canvas#confetti
+    //-
+      #video-container
+        video#video-bg(poster='/img/milkyway.jpg' autoplay loop)
+          source(src="/img/milkyway.webm" type="video/webm")
+          source(src="/img/milkyway.mp4" type="video/mp4")
+    .jumbotron.full-page.landing.before-bg.trianglify.flex-center
+      .container
+        div
+          h1.text-light.text-uppercase.wow.fadeIn(data-wow-delay='0.3s') Need a classy website?
+          h2.text-light.wow.fadeIn(data-wow-delay='0.5s') Don't worry - #[span(itemprop="name") Leung Enterprises] can do that all, and more.
+        div.paginate
+          a(href='#intro-text')
+            i.ion-chevron-down.fa-2x.wow.bounce(data-wow-iteration='2' data-wow-delay='0.7s')
+    .jumbotron.half-page.flex-center#intro-text
+      .container
+        h2.text-light.line-1p5.wow.fadeIn(itemprop='description' data-wow-delay='0.3s').
+          Leung Enterprises is a #[span(itemprop='location') Philadelphia]-based web design and development shop 
+          dedicated to helping you and your business succeed. We build affordable, 
+          responsive websites that drive sales and convert customers.  We're eager 
+          to work with you and can't wait to get started.
+    .jumbotron.full-page.parallax-window.trianglify.before-bg#about
+      .container.text-center
+        h1.logo
+          span.leung Leung
+          span.enterprises Enterprises
+        .panel.col-md-8.col-md-offset-2.wow.fadeIn(style='margin-top: 45px')
+          .panel-body
+            h2.text-light.text-uppercase Why us?
+            br
+            p.
+              A classy website, custom emails, domain and hosting setup&mdash;whatever you need, we can do it.
+              With Leung Enterprises, getting an awesome new website for your business is simple and straightforward.
+            br
+            a.btn.btn-success.btn-lg(href='./about') More About Us
+    .jumbotron.full-page.light-bg#work
+      .container
+        h1.text-light.text-center Our Work
+        p.text-center We've tailored designs for clients from many different industries.
+        br
+        br
+        .row.wow.fadeIn
+          .col-sm-6
+            a(href='./portfolio/saffron-indian')
+              img.img-responsive.box-shadow(src="/img/portfolio/saffron.jpg")
+          .col-sm-6
+            h2 The Art of Blending Spices
+            br
+            p.
+              Saffron Indian Kitchen is a fine dining establishment with locations in Ambler and Bala Cynwyd, PA.
+              Leung Enterprises was commissioned to create a high-quality website which would showcase the restaurant's
+              selection of Indian cuisine, highlighting items such as samosas and tikka masala.
+            br
+            a.btn.btn-info.btn-lg.hidden-xs(href='./portfolio/saffron-indian') More Info
+        br
+        br
+        br
+      .container-fluid
+        .row.text-center.hidden-xs.no-padding-sides
+          .col-sm-4.wow.fadeIn(data-wow-delay='0.3s')
+            a.portfolio-link(href='./portfolio/lgrunners')
+              #lgrunners
+                .overlay
+                  div
+                    p.no-margin-bottom LG Runners
+                    span.help-block Community running club
+          .col-sm-4.wow.fadeIn(data-wow-delay='0.5s')
+            a.portfolio-link(href='./portfolio/neoscreen')
+              #neo
+                .overlay
+                  div
+                    p.no-margin-bottom NeoScreen Products
+                    span.help-block Innovative screen repair toolkit
+          .col-sm-4.wow.fadeIn(data-wow-delay='0.7s')
+            a.portfolio-link(href='./portfolio/ashe-attire')
+              #ase
+                .overlay
+                  div
+                    p.no-margin-bottom Ash&eacute; Attire
+                    span.help-block Spreading diversity through clothing
+          .clearfix
+          br
+          br
+        .row.text-center
+          .col-xs-12.text-center
+            a.btn.btn-success.btn-lg(href='./portfolio') Our Portfolio
+    .jumbotron.half-page.transparent-bg.parallax-window.text-center.trianglify.before-bg#services
+      .container
+        h1.text-light Our Services
+        p Need something special?  Drop us a line and we can work something out.
+        br
+        br
+        .row
+          .col-sm-4.wow.fadeIn
+            i.ion-code-working.text-12x
+            h2.text-light Custom Website Design
+            p.
+              We offer premium website design services, both with custom-code and Wordpress.  Our designs
+              are fully responsive and work on both mobile and desktop.
+          .col-sm-4.wow.fadeIn(data-wow-delay='0.3s')
+            i.ion-ios-search.text-12x
+            h2.text-light Search Engines (SEO)
+            p.
+              We'll boost your business's ranking on search engines, helping you to increase your sales and revenue.
+          .col-sm-4.wow.fadeIn(data-wow-delay='0.5s')
+            i.ion-folder.text-12x
+            h2.text-light Domain and Hosting
+            p We offer full domain setup and hosting maintenance for a small monthly fee.
+          .clearfix
+          br
+          br
+          a.btn.btn-transparent.btn-lg(href='./services') Our Services
+
+block scripts
+  //- No more confetti :(
+  //- script(src='/js/birthday.js')
+  script.
+    // var video = document.getElementById('video-bg');
+    // video.playbackRate = 0.333;
+  script(src="/vendor/trianglify/dist/trianglify.min.js")
+  script.
+    function genTriangles() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var colorFunc = function(x, y) {
+        return 'hsl(0,0%,'+Math.floor(Math.abs(x*y*100))+'%)';
+      };
+      var pattern = Trianglify({
+        // in case the jumbotron is a bit bigger
+        height: height * 2,
+        width: width,
+        cell_size: 100,
+        color_function: colorFunc
+      });
+      var image = pattern.png();
+      // ios safari is weird - it doesn't show trianglify with the main-bg in the back
+      // changing this to just the main-bg
+      var elements = ["#main-bg"];
+      var afterElements = elements.map(function(el) {
+        return el + '::after';
+      });
+      /* iOS fix
+        var css = "<style>" +
+                    elements.toString() + " { " +
+                      "position: relative;" +
+                    "}" +
+                    afterElements.toString() + " {" +
+                      "content: '';" +
+                      "display: block;" +
+                      "z-index: -1;" +
+                      "position: absolute;" +
+                      "top: 0;" +
+                      "bottom: 0;" +
+                      "left: 0;" +
+                      "right: 0;" +
+                      "opacity: 0.7;" +
+                      "background: url(" + image + ");" +
+                    "}" +
+                  "</style>";
+      */
+      var css = "<style>" +
+                  afterElements.toString() + " {" +
+                    "content: '';" +
+                    "display: block;" +
+                    "z-index: -1;" +
+                    "position: fixed;" +
+                    "top: 0;" +
+                    "bottom: 0;" +
+                    "left: 0;" +
+                    "right: 0;" +
+                    "opacity: 0.45;" +
+                    "background: url(" + image + ");" +
+                  "}" +
+                "</style>";
+      $('head').append(css);
+    }
+    genTriangles();
+    $(window).resize(function() {
+      genTriangles();
+    });
+    

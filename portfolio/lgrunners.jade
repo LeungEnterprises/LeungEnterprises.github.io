@@ -1,0 +1,103 @@
+extends /_layout
+
+block vars
+  - page = 'portfolio'
+
+block head
+  title LG Runners | Leung Enterprises Web Design Philadelphia
+  meta(name="description" content="The LG Runners website is clean, intuitive, and informative.  It was designed with all platforms in mind, and looks great on both mobile and desktop.")
+  style.
+    .lgrunners::before {
+      background: url('/img/runners.jpg');
+      background-size: cover;
+      background-position: 70%;
+    }
+    
+block content
+  main
+    .jumbotron.flex-center.half-page.cc-before-bg.lgrunners.transparent-bg.trianglify
+      .container
+        .spacer-60
+        div
+          h1.text-light.text-uppercase.wow.fadeIn LG Runners
+          h2.text-light.wow.fadeIn(data-wow-delay='0.3s').
+            A community running club based in Lower Gwynedd, PA.
+    .jumbotron.half-page.light-bg
+      .container-fluid
+        br
+        br
+        .row.wow.fadeIn
+          .col-md-6
+            a(href='http://www.lgrunners.ga' target='_blank')
+              img.img-responsive.box-shadow(src="/img/portfolio/lgrunners.jpg")
+          .col-md-5.col-md-offset-1
+            h2 Fun Running
+            p.
+              LG Runners is a community running club based in Lower Gwynedd, PA, targeted towards younger children and their parents. A clean, intuitive website communicates the progressiveness of the organization and its mission&mdash;to change the world through running.
+            br
+            a.btn.btn-info.visit-website(href='http://www.lgrunners.ga' target='_blank') View Website&nbsp;&nbsp;#[i.ion-forward]
+        .clearfix
+        .col-md-12.text-center
+          br
+          br
+          br
+          a.btn.btn-success.btn-lg(href='/portfolio') Back to Portfolio
+        .clearfix
+        br
+        br
+    .jumbotron.full-page.parallax-window.lgrunners.flex-center.trianglify.before-bg
+      .container
+    
+block scripts
+  script(src='/vendor/trianglify/dist/trianglify.min.js')
+  script.
+    function genTriangles() {
+      var height = window.innerHeight;
+      var width = window.innerWidth;
+      var colorFunc = function(x, y) {
+        return 'hsl(0,0%,'+Math.floor(Math.abs(x*y*100))+'%)';
+      };
+      // if desktop, leave a little room for some jumbotron overflow
+      if ($(window).innerWidth() >= 768) {
+        height = 1.3 * height;
+      } else {
+        // if mobile,  give a lot of room
+        height = 2.5 * height;
+      }
+      var pattern = Trianglify({
+        // in case the jumbotron is a bit bigger
+        height: height,
+        width: width,
+        cell_size: 100,
+        color_function: colorFunc
+      });
+      var image = pattern.png();
+      var elements = [".trianglify"];
+      var afterElements = elements.map(function(el) {
+        return el + '::after';
+      });
+      var css = "<style id='trianglify-styles'>" +
+                  elements.toString() + " { " +
+                    "position: relative;" +
+                  "}" +
+                  afterElements.toString() + " {" +
+                    "content: '';" +
+                    "display: block;" +
+                    "z-index: -1;" +
+                    "position: absolute;" +
+                    "top: 0;" +
+                    "bottom: 0;" +
+                    "left: 0;" +
+                    "right: 0;" +
+                    "opacity: 0.6;" +
+                    "background: url(" + image + ");" +
+                  "}" +
+                "</style>";
+      $('head').append(css);
+    }
+    genTriangles();
+    $(window).resize(function() {
+      // $('#trianglify-styles').(jquery function to remove element)
+      genTriangles();
+    });
+    

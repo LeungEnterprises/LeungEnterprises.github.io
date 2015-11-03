@@ -1,0 +1,305 @@
+// @import 'fonts'
+@import 'utility'
+@import 'elements'
+
+// Scaffolding
+html, body
+  height 100%
+
+body
+  font-family 'Open Sans', sans-serif
+  font-weight 300
+  overflow hidden // for preloader, will change in js
+  background black // chrome has a bug, see http://stackoverflow.com/questions/19986617/remove-white-line-in-chrome
+
+// Credits to Tobias Ahlin' SpinKit: http://tobiasahlin.com/spinkit/
+#loader-overlay
+  position fixed
+  top 0
+  left 0
+  right 0
+  bottom 0
+  background #eee
+  z-index 99
+#loader
+  width 40px
+  height 40px
+  margin 100px auto
+  background-color #333
+
+  border-radius 100%
+  animation sk-scaleout 1.0s infinite ease-in-out
+@keyframes sk-scaleout
+  0%
+    transform scale(0)
+  100%
+    transform scale(1.0)
+    opacity 0
+
+navbar_height = 150px
+header.mobile
+  display block
+  transition all 0.3s
+  &.unscrolled
+    background transparent
+    border-bottom 0
+    ul.nav.navbar-nav
+      background #333
+      margin-top 0
+  @media (min-width: 768px)
+    display none
+  .navbar-toggle
+    border 0
+    border-radius 0
+    &:hover, &:focus, &:active
+      background transparent
+  .navbar-brand
+    text-transform uppercase
+    color white
+    font-weight 400
+  ul.nav.navbar-nav > li > a
+    text-transform uppercase
+    text-align center
+    letter-spacing 0.12rem
+  li.social-block
+    text-align center
+    & > a
+      display inline-block
+      text-align center
+header.desktop
+  display none
+  @media (min-width: 768px)
+    display block
+  z-index 1
+  position fixed
+  left 0
+  right 0
+  transition all 0.3s
+  navbar_small_height = 75px
+  &.open
+    background #222
+    .header-nav
+      margin-bottom 0
+      & > li > a
+        transition all 0.3s
+        font-size 14px
+        height navbar_small_height
+        line-height navbar_small_height
+        position relative
+        top -6px
+        &:not(.brand):not(.brand-open)
+          &::after
+            display none
+        &.brand
+          display none
+        &.brand-open
+          display block
+  &.header-not-home, .no-js &
+    @extend header.desktop.open
+  .header-nav
+    list-style-type none
+    & > li
+      display inline-block
+      height 100%
+      &.active > a
+        color white
+      & > a
+        text-transform uppercase
+        font-variant small-caps
+        display inline-block
+        height navbar_height
+        line-height navbar_height
+        margin: 0px 30px
+        @media (max-width: 991px)
+          margin 0px 15px
+        color #ccc
+        vertical-align middle
+        font-size 18px
+        font-weight 300
+        transition all 0.3s
+        &:not(.brand):not(.brand-open)
+          letter-spacing 2px
+          &::after
+            content ''
+            // display block
+            // disable the underline effect
+            display: none
+            height 1px
+            background #fff
+            width 100%
+            transform scaleX(0)
+            visibility hidden // fallback
+            position relative
+            top -60px
+            transition all 0.5s
+          &:hover, &:focus, &:active
+            color white
+            outline 0
+            &::after
+              visibility visible
+              transform scaleX(1)
+        &.brand-open
+          display none
+          font-size 44px
+          position relative
+          top 5px
+        &.brand
+          logo_scale = 1
+          text-transform uppercase
+          color white
+          #leung
+            font-size 48px * logo_scale
+            position relative
+            top -15px
+          #enterprises
+            font-size 25px * logo_scale
+            position relative
+            top -144px
+        &:hover, &:focus, &:active
+          text-decoration none
+          outline 0
+
+.jumbotron
+  &.half-page
+    margin-bottom 0
+    min-height 60vh
+    background #fff
+    color #333
+  &.full-page
+    margin-bottom 0
+    min-height 100vh
+    color #eee
+    background transparent
+    &.landing
+      text-align center
+      position relative // for .paginate
+      &::before
+        content ''
+        display block
+        z-index -1
+        position absolute
+        top 0
+        bottom 0
+        left 0
+        right 0
+        // background url('/img/ccenter.jpg') - comcast center
+        // background url('//i.imgur.com/SaO11vo.jpg') - red canyon
+        // background url('//i.imgur.com/4zeugpC.jpg') - galaxy
+        /*
+        background linear-gradient(
+                     rgba(0,0,0,0.2),
+                     rgba(0,0,0,0.2)
+                   ),
+                   url('/img/startrails.jpg') // - galaxy
+        */
+      .paginate
+        position absolute
+        bottom 0
+        left 0
+        right 0
+        padding-bottom 48px
+        a
+          color white
+          &:hover, &:focus, &:active
+            border none
+            outline none
+            text-decoration none
+
+.portfolio-link:hover
+  text-decoration none
+
+// Direct child of portfolio link are the #ashe, #neoscreen, etc. elements
+.portfolio-link > div
+  width 100%
+  height 180px // on mobile devices
+  @media (min-width: 768px)
+    height 220px // on desktops
+  background-size cover
+  background-repeat no-repeat
+  background-position top center
+  @media (min-width: 768px)
+    &.size-1p5x
+      height 330px
+    &.size-2x
+      height 440px
+  .overlay
+    @extend .flexbox .flex-center
+    height 100%
+    width 100%
+    color #eee
+    background rgba(black, 0.85);
+    opacity 0
+    transition all 0.3s
+  &:hover .overlay
+    opacity 1
+
+#saffron
+  background-image url('/img/portfolio/saffron.jpg')
+#ase
+  background-image url('/img/portfolio/ashe.jpg')
+#neo
+  background-image url('/img/portfolio/neoscreen.jpg')
+#track
+  background-image url('/img/portfolio/track.png')
+#your
+  background-image url('//i.imgur.com/pO2dX3b.jpg?1')
+#fbla
+  background-image url('/img/portfolio/fbla.png')
+#lgrunners
+  background-image url('/img/portfolio/lgrunners.jpg')
+
+.visit-website
+  display block
+  width 150px
+  margin 0 auto
+  @media (min-width: 768px)
+    display inline-block
+    width auto
+    text-align left
+
+.testimonial-container
+  font-size 4rem !important // override jumbotron css
+  .testimonial
+    font-style italic
+    margin-top 30px
+    font-size 4rem
+    display inline-block
+  .quote-left
+    font-size 15rem
+    display inline-block
+    margin-right 15px
+
+.quote-left::before
+  content '\201C'
+  display inline-block
+  font-family: 'Times New Roman', sans-serif
+
+.social-row a
+  color #333
+  margin-right 15px
+  font-size 20px
+  &:hover
+    text-decoration none
+
+footer.jumbotron
+  padding-top 15px
+  padding-bottom 0px
+  a
+    color #eee
+    &:hover
+      text-decoration none
+  .row.darker-bg
+    margin-top 15px
+  .classy
+    animation rainbowText
+    animation rainbowText 5s infinite
+    animation-timing-function linear
+
+.nav-bottom
+  padding 30px
+  & > li > a
+    color #aaa
+    transition all 0.3s
+    &:hover, &:focus, &:active
+      background transparent
+      color #fff
