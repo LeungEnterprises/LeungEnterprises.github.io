@@ -11,8 +11,13 @@ $(document).ready(function () {
 
   if (msie) {
     $('html').addClass('msie');
+    $('body').prepend('\n      <div class="topbar">\n        <span>\n          It seems that you\'re using Internet Explorer.  Please switch to a more standards-compliant browser such as \n          <a class="btn btn-primary btn-xs" target="_blank" href="https://www.google.com/chrome/">Chrome</a>\n          or <a class="btn btn-primary btn-xs" target="_blank" href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> \n          for the best experience.\n        </span>\n      </div>\n    ');
+    $('.main').css({ 'margin-top': '50px' });
+    // We'll let IE have a loading animation.
+    /*
     $('#loader').addClass('hidden');
     $('#loader-overlay').append('<span class="text-5x text-light">&hellip;</span>');
+    */
   }
 
   // Preloader Animation
@@ -65,7 +70,7 @@ $(document).ready(function () {
       }
     });
   }
-  // initialize WOW.js, but not on iOS
+  // initialize WOW.js, but not on iOS or IE
   var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   if (!iOS) {
     new WOW().init();

@@ -62,17 +62,13 @@ block content
                     button.btn.btn-success.btn-lg(type="submit") Send
 
 block scripts
-  //- This is needed to get city/town and country name.
-  script(src="http://www.geoplugin.net/javascript.gp")
   script.
     $(document).ready(function() {
       $("input[name='userAgent']").val(navigator.userAgent);
-      $.getJSON("https://api.ipify.org?format=jsonp&callback=?", function(json) {
-        var ip = String(json.ip);
-        $("input[name='ipAddress']").val(ip);
-      });
-      var location = geoplugin_city() + ", " + geoplugin_region() + ", " + geoplugin_countryName();
-      $("input[name='location']").val(location);
+      $.get("//ipinfo.io", function(data) {
+        $("input[name='ipAddress']").val(data.ip);
+        $("input[name='location']").val(data.city + ", " + data.region + ", " + data.country);
+      }, "jsonp");
     });
   script(src='/vendor/trianglify/dist/trianglify.min.js')
   script.
@@ -114,9 +110,11 @@ block scripts
       $('head').append(css);
     }
     genTriangles();
-    $(window).resize(function() {
-      genTriangles();
-    });
+    if (!iOS) {
+      $(window).resize(function() {
+        genTriangles();
+      });
+    }
   //- Disable affix for now
     script.
       if ($(window).innerWidth() >= 768) {

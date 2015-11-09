@@ -196,22 +196,18 @@
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-* .flex-center::before,
-.no-flexbox .flex-center::before,
-.msie .flex-center::before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
+.no-flexbox .flex-center,
+.msie .flex-center {
+  display: table;
+  width: 100vw;
 }
-* .flex-center > *,
 .no-flexbox .flex-center > *,
 .msie .flex-center > * {
-  display: inline-block;
+  display: table-cell;
+  text-align: center;
   vertical-align: middle;
 }
-.flexbox .flex-center,
-.portfolio-link > div .overlay {
+html:not(.msie) .flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -543,18 +539,33 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  height: 100vh;
+  width: 100vw;
   background: #eee;
   z-index: 99;
 }
 #loader {
+  display: block;
   width: 40px;
   height: 40px;
   margin: 100px auto;
   background-color: #333;
   border-radius: 100%;
   animation: sk-scaleout 1s infinite ease-in-out;
+}
+.topbar {
+  position: absolute;
+  background: rgba(238,238,238,0.9);
+  top: 0;
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+}
+.topbar span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
 }
 header.mobile {
   display: block;
@@ -615,6 +626,7 @@ header.desktop {
 header.desktop.open,
 header.desktop.header-not-home,
 .no-js header.desktop {
+  top: 0;
   background: #222;
 }
 header.desktop.open .header-nav,
@@ -802,6 +814,10 @@ header.desktop .header-nav > li > a:active {
   }
 }
 .portfolio-link > div .overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   height: 100%;
   width: 100%;
   color: #eee;

@@ -50,7 +50,7 @@ gulp.task('copy-fonts', () => {
 
 // Copies the `vendor` directory into the `build` directory
 gulp.task('copy-vendor', () => {
-  return gulp.src('./vendor/**/*')
+  return gulp.src(['./vendor/**/*', '!./vendor/Ionicons/src/*'])
     .pipe(gulp.dest('./build/vendor'));
 });
 

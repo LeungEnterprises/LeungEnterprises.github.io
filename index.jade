@@ -66,7 +66,8 @@ block head
 block content
   main
     #main-bg
-      canvas#confetti
+      //-
+        canvas#confetti
     //-
       #video-container
         video#video-bg(poster='/img/milkyway.jpg' autoplay loop)
@@ -243,7 +244,8 @@ block scripts
       $('head').append(css);
     }
     genTriangles();
-    $(window).resize(function() {
-      genTriangles();
-    });
-    
+    if (!iOS) {
+      $(window).resize(function() {
+        genTriangles();
+      });
+    }

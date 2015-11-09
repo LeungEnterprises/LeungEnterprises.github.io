@@ -89,7 +89,9 @@ block scripts
       $('head').append(css);
     }
     genTriangles();
-    $(window).resize(function() {
-      genTriangles();
-    });
+    if (!iOS) {
+      $(window).resize(function() {
+        genTriangles();
+      });
+    }
     

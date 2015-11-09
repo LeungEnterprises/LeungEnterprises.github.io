@@ -36,11 +36,13 @@ html.no-js(lang='en')
     block head
   body(itemscope itemtype="http://schema.org/ProfessionalService")
     #loader-overlay.flex-center
-      #loader
-    
-    include /_partials/header
-    block content
-    include /_partials/footer
+      #loader-wrapper
+        #loader
+    //- Move main out here soon
+    .main
+      include /_partials/header
+      block content
+      include /_partials/footer
 
     // build:js /js/combined.min.js 
     script(src="/js/modernizr-custom.js")

@@ -100,8 +100,9 @@ block scripts
       $('head').append(css);
     }
     genTriangles();
-    $(window).resize(function() {
-      // $('#trianglify-styles').(jquery function to remove element)
-      genTriangles();
-    });
+    if (!iOS) {
+      $(window).resize(function() {
+        genTriangles();
+      });
+    }
     

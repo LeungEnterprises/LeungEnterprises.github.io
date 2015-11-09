@@ -69,27 +69,26 @@ for i in 1..15
     
 // Flexbox Classes
 // Default flex-center behavior, credits to https://css-tricks.com/centering-in-the-unknown/
-*,
 .no-flexbox,
 .msie
   
   .flex-center
-    
-    &::before
-      content ''
-      display inline-block
-      height 100%
-      vertical-align middle
+    display table
+    width 100vw
       
     & > *
-      display inline-block
+      display table-cell
+      text-align center
       vertical-align middle
-      
-.flexbox .flex-center
+
+flex-center = 
   display flex
   align-items center
   justify-content center
   text-align center
+
+html:not(.msie) .flex-center
+  {flex-center}
     
 // Background classes
 .before-bg

@@ -17,16 +17,16 @@ body
   position fixed
   top 0
   left 0
-  right 0
-  bottom 0
+  height 100vh
+  width 100vw
   background #eee
   z-index 99
 #loader
+  display block
   width 40px
   height 40px
   margin 100px auto
   background-color #333
-
   border-radius 100%
   animation sk-scaleout 1.0s infinite ease-in-out
 @keyframes sk-scaleout
@@ -35,6 +35,20 @@ body
   100%
     transform scale(1.0)
     opacity 0
+    
+.topbar
+  position absolute
+  background rgba(#eee, 0.9)
+  top 0
+  height 50px
+  width 100%
+  line-height 50px
+  text-align center
+  
+  span
+    display inline-block
+    vertical-align middle
+    line-height normal
 
 navbar_height = 150px
 header.mobile
@@ -77,6 +91,7 @@ header.desktop
   transition all 0.3s
   navbar_small_height = 75px
   &.open
+    top 0 // For the .topbar
     background #222
     .header-nav
       margin-bottom 0
@@ -223,7 +238,7 @@ header.desktop
     &.size-2x
       height 440px
   .overlay
-    @extend .flexbox .flex-center
+    {flex-center}
     height 100%
     width 100%
     color #eee
