@@ -165,10 +165,9 @@
     <script>
       $(document).ready(function() {
         $("input[name='userAgent']").val(navigator.userAgent);
-        $.get("//ipinfo.io", function(data) {
+        $.get("//api.ipify.org?format=json", function(data) {
           $("input[name='ipAddress']").val(data.ip);
-          $("input[name='location']").val(data.city + ", " + data.region + ", " + data.country);
-        }, "jsonp");
+        });
       });
     </script>
     <script src="/vendor/trianglify/dist/trianglify.min.js"></script>
