@@ -98,12 +98,11 @@ gulp.task('copy-fonts', () => {
     .pipe(gulp.dest('./dist/fonts'));
 });
 
-// Copy the js files that won't be useref'd
+// It's easier just to copy the whole vendor directory
+// for things that aren't useref'd
 gulp.task('copy-custom-vendor', () => {
-  /*
-  return gulp.src('./src/vendor/path/to/file')
-    .pipe(gulp.dest('./dist/vendor/path/to/file'));
-  */
+  return gulp.src('./src/vendor/**/*')
+    .pipe(gulp.dest('./dist/vendor/'));
 });
 
 gulp.task('useref', () => {

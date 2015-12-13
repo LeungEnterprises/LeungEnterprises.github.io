@@ -1,7 +1,5 @@
 "use strict";
 
-function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return right[Symbol.hasInstance](left); } else { return left instanceof right; } }
-
 function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
 
 /*! modernizr 3.2.0 (Custom Build) | MIT *
@@ -10,8 +8,14 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
   function r(e, n) {
     return (typeof e === "undefined" ? "undefined" : _typeof(e)) === n;
   }function o() {
-    var e, n, t, o, s, i, a;for (var l in C) if (C.hasOwnProperty(l)) {
-      if ((e = [], n = C[l], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length))) for (t = 0; t < n.options.aliases.length; t++) e.push(n.options.aliases[t].toLowerCase());for (o = r(n.fn, "function") ? n.fn() : n.fn, s = 0; s < e.length; s++) i = e[s], a = i.split("."), 1 === a.length ? Modernizr[a[0]] = o : (!Modernizr[a[0]] || _instanceof(Modernizr[a[0]], Boolean) || (Modernizr[a[0]] = new Boolean(Modernizr[a[0]])), Modernizr[a[0]][a[1]] = o), g.push((o ? "" : "no-") + a.join("-"));
+    var e, n, t, o, s, i, a;for (var l in C) {
+      if (C.hasOwnProperty(l)) {
+        if ((e = [], n = C[l], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length))) for (t = 0; t < n.options.aliases.length; t++) {
+          e.push(n.options.aliases[t].toLowerCase());
+        }for (o = r(n.fn, "function") ? n.fn() : n.fn, s = 0; s < e.length; s++) {
+          i = e[s], a = i.split("."), 1 === a.length ? Modernizr[a[0]] = o : (!Modernizr[a[0]] || Modernizr[a[0]] instanceof Boolean || (Modernizr[a[0]] = new Boolean(Modernizr[a[0]])), Modernizr[a[0]][a[1]] = o), g.push((o ? "" : "no-") + a.join("-"));
+        }
+      }
     }
   }function s(e) {
     var n = x.className,
@@ -31,7 +35,9 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
       return e.apply(n, arguments);
     };
   }function u(e, n, t) {
-    var o;for (var s in e) if (e[s] in n) return t === !1 ? e[s] : (o = n[e[s]], r(o, "function") ? f(o, t || n) : o);return !1;
+    var o;for (var s in e) {
+      if (e[s] in n) return t === !1 ? e[s] : (o = n[e[s]], r(o, "function") ? f(o, t || n) : o);
+    }return !1;
   }function d(e) {
     return e.replace(/([A-Z])/g, function (e, n) {
       return "-" + n.toLowerCase();
@@ -45,12 +51,18 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
         f,
         u = "modernizr",
         d = a("div"),
-        c = p();if (parseInt(r, 10)) for (; r--;) l = a("div"), l.id = o ? o[r] : u + (r + 1), d.appendChild(l);return s = a("style"), s.type = "text/css", s.id = "s" + u, (c.fake ? c : d).appendChild(s), c.appendChild(d), s.styleSheet ? s.styleSheet.cssText = e : s.appendChild(n.createTextNode(e)), d.id = u, c.fake && (c.style.background = "", c.style.overflow = "hidden", f = x.style.overflow, x.style.overflow = "hidden", x.appendChild(c)), i = t(d, e), c.fake ? (c.parentNode.removeChild(c), x.style.overflow = f, x.offsetHeight) : d.parentNode.removeChild(d), !!i;
+        c = p();if (parseInt(r, 10)) for (; r--;) {
+      l = a("div"), l.id = o ? o[r] : u + (r + 1), d.appendChild(l);
+    }return s = a("style"), s.type = "text/css", s.id = "s" + u, (c.fake ? c : d).appendChild(s), c.appendChild(d), s.styleSheet ? s.styleSheet.cssText = e : s.appendChild(n.createTextNode(e)), d.id = u, c.fake && (c.style.background = "", c.style.overflow = "hidden", f = x.style.overflow, x.style.overflow = "hidden", x.appendChild(c)), i = t(d, e), c.fake ? (c.parentNode.removeChild(c), x.style.overflow = f, x.offsetHeight) : d.parentNode.removeChild(d), !!i;
   }function m(n, r) {
     var o = n.length;if ("CSS" in e && "supports" in e.CSS) {
-      for (; o--;) if (e.CSS.supports(d(n[o]), r)) return !0;return !1;
+      for (; o--;) {
+        if (e.CSS.supports(d(n[o]), r)) return !0;
+      }return !1;
     }if ("CSSSupportsRule" in e) {
-      for (var s = []; o--;) s.push("(" + d(n[o]) + ":" + r + ")");return s = s.join(" or "), c("@supports (" + s + ") { #modernizr { position: absolute; } }", function (e) {
+      for (var s = []; o--;) {
+        s.push("(" + d(n[o]) + ":" + r + ")");
+      }return s = s.join(" or "), c("@supports (" + s + ") { #modernizr { position: absolute; } }", function (e) {
         return "absolute" == getComputedStyle(e, null).position;
       });
     }return t;
@@ -59,10 +71,14 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
       d && (delete z.style, delete z.modElem);
     }if ((s = r(s, "undefined") ? !1 : s, !r(o, "undefined"))) {
       var u = m(e, o);if (!r(u, "undefined")) return u;
-    }for (var d, p, c, h, v, y = ["modernizr", "tspan"]; !z.style;) d = !0, z.modElem = a(y.shift()), z.style = z.modElem.style;for (c = e.length, p = 0; c > p; p++) if ((h = e[p], v = z.style[h], i(h, "-") && (h = l(h)), z.style[h] !== t)) {
-      if (s || r(o, "undefined")) return f(), "pfx" == n ? h : !0;try {
-        z.style[h] = o;
-      } catch (g) {}if (z.style[h] != v) return f(), "pfx" == n ? h : !0;
+    }for (var d, p, c, h, v, y = ["modernizr", "tspan"]; !z.style;) {
+      d = !0, z.modElem = a(y.shift()), z.style = z.modElem.style;
+    }for (c = e.length, p = 0; c > p; p++) {
+      if ((h = e[p], v = z.style[h], i(h, "-") && (h = l(h)), z.style[h] !== t)) {
+        if (s || r(o, "undefined")) return f(), "pfx" == n ? h : !0;try {
+          z.style[h] = o;
+        } catch (g) {}if (z.style[h] != v) return f(), "pfx" == n ? h : !0;
+      }
     }return f(), !1;
   }function v(e, n, t, o, s) {
     var i = e.charAt(0).toUpperCase() + e.slice(1),
@@ -87,5 +103,7 @@ function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.const
     delete P.elem;
   });var z = { style: P.elem.style };Modernizr._q.unshift(function () {
     delete z.style;
-  }), w.testAllProps = v, w.testAllProps = y, Modernizr.addTest("flexbox", y("flexBasis", "1px", !0)), o(), s(g), delete w.addTest, delete w.addAsyncTest;for (var N = 0; N < Modernizr._q.length; N++) Modernizr._q[N]();e.Modernizr = Modernizr;
+  }), w.testAllProps = v, w.testAllProps = y, Modernizr.addTest("flexbox", y("flexBasis", "1px", !0)), o(), s(g), delete w.addTest, delete w.addAsyncTest;for (var N = 0; N < Modernizr._q.length; N++) {
+    Modernizr._q[N]();
+  }e.Modernizr = Modernizr;
 })(window, document);
