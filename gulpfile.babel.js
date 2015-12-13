@@ -107,7 +107,7 @@ gulp.task('copy-custom-vendor', () => {
 
 // Miscellaneous copying
 gulp.task('misc-copy', () => {
-  return gulp.src(['./src/CNAME', './src/sitemap.xml'])
+  return gulp.src(['./src/CNAME', './src/sitemap.xml', './src/README.md'])
     .pipe(gulp.dest('./dist/'));
 });
 

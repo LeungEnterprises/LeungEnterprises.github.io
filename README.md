@@ -11,7 +11,6 @@ View the site here: [https://www.leungenterprises.com](https://www.leungenterpri
 ## Committing
 `git push origin master:source`
 
-
 ## Included Plugins
 - "babel": "^6.0.15" (for the ES6 gulpfile)
 - "babel-preset-es2015": "^6.0.15" (for the ES6 gulpfile)
