@@ -8,6 +8,9 @@ View the site here: [https://www.leungenterprises.com](https://www.leungenterpri
 2. The compiled files will appear in the `build` directory.
 3. Copy the compiled folder (`build`) from this repository into the `www-produce` repository to produce the files.
 
+## Committing
+`git push origin source`
+
 
 ## Included Plugins
 - "babel": "^6.0.15" (for the ES6 gulpfile)
