@@ -42,7 +42,7 @@ block content
             br
             .row
               .col-xs-12
-                form.text-left(action='//formspree.io/hello@leungenterprises.com' method='post')
+                form.text-left(action='//formspree.io/hello@leungenterprises.com' method='post' onsubmit='return sendGaEvent();')
                   input(type='hidden' name='_next' value="https://www.leungenterprises.com/contact-thanks")
                   input(type='hidden' name='_subject' value="Leung Enterprises Web Design")
                   input(type='text' style="visibility: hidden; display: none;" name='_gotcha')
@@ -69,15 +69,15 @@ block scripts
         $("input[name='ipAddress']").val(data.ip);
       });
     });
-  //- doesn't work with https unless you pay
-    script.
-      $(document).ready(function() {
-        $("input[name='userAgent']").val(navigator.userAgent);
-        $.get("//ipinfo.io", function(data) {
-          $("input[name='ipAddress']").val(data.ip);
-          $("input[name='location']").val(data.city + ", " + data.region + ", " + data.country);
-        }, "jsonp");
+    function sendGaEvent() {
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Button',
+        eventAction: 'click',
+        eventLabel: 'Contact Us'
       });
+      return true;
+    }
   script(src='/vendor/trianglify/dist/trianglify.min.js')
   script.
     function genTriangles() {
