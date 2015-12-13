@@ -1,21 +1,28 @@
-'use strict';
-
 // Make iOS global
-var iOS = false;
+let iOS = false;
 
-$(document).ready(function () {
+$(document).ready(() => {
   // IE detection; their flexbox implementation is a bit wonky
-  var msie = (function msieversion() {
-    var ua = window.navigator.userAgent;
-    var msie = ua.indexOf("MSIE ");
+  let msie = (function msieversion() {
+    let ua = window.navigator.userAgent;
+    let msie = ua.indexOf("MSIE ");
 
-    return msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./);
+    return (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./));
   })();
 
   if (msie) {
     $('html').addClass('msie');
-    $('body').prepend('\n      <div class="topbar">\n        <span>\n          It seems that you\'re using Internet Explorer.  Please switch to a more standards-compliant browser such as \n          <a class="btn btn-primary btn-xs" target="_blank" href="https://www.google.com/chrome/">Chrome</a>\n          or <a class="btn btn-primary btn-xs" target="_blank" href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> \n          for the best experience.\n        </span>\n      </div>\n    ');
-    $('.main').css({ 'margin-top': '50px' });
+    $('body').prepend(`
+      <div class="topbar">
+        <span>
+          It seems that you're using Internet Explorer.  Please switch to a more standards-compliant browser such as 
+          <a class="btn btn-primary btn-xs" target="_blank" href="https://www.google.com/chrome/">Chrome</a>
+          or <a class="btn btn-primary btn-xs" target="_blank" href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> 
+          for the best experience.
+        </span>
+      </div>
+    `);
+    $('.main').css({'margin-top': '50px'});
     // We'll let IE have a loading animation.
     /*
     $('#loader').addClass('hidden');
@@ -24,18 +31,18 @@ $(document).ready(function () {
   }
 
   // Preloader Animation
-  $(window).load(function () {
+  $(window).load(() => {
     $('#loader').fadeOut();
     $('#loader-overlay').delay(100).fadeOut('slow');
-    $('body').delay(100).css({ 'overflow': 'visible' });
+    $('body').delay(100).css({'overflow':'visible'});
   });
 
   // Smooth Scroll from CSS-Tricks
-  $(function () {
-    $('a[href*=#]:not([href=#])').click(function () {
-      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+  $(function() {
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+        let target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
         if (target.length) {
           $('html,body').animate({
             scrollTop: target.offset().top - 48 // 48 is jumbotron padding
@@ -47,7 +54,7 @@ $(document).ready(function () {
   });
   // change desktop header on scroll
   if ($(window).innerWidth() >= 768) {
-    $(window).scroll(function () {
+    $(window).scroll(() => {
       if ($(window).scrollTop() > 50) {
         if (!$('header.desktop').hasClass('open')) {
           $('header.desktop').addClass('open');
@@ -61,7 +68,7 @@ $(document).ready(function () {
   }
   // change mobile header on scroll
   if ($(window).innerWidth() < 768) {
-    $(window).scroll(function () {
+    $(window).scroll(() => {
       if ($(window).scrollTop() > 5) {
         if ($('header.mobile').hasClass('unscrolled')) {
           $('header.mobile').removeClass('unscrolled');

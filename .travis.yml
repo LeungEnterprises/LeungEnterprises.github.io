@@ -1,0 +1,11 @@
+before_script:
+- npm install -g gulp
+- npm install -g bower
+script: bash ./deploy.sh
+env:
+  global:
+  - GH_REF: github.com/LeungEnterprises/leungenterprises.github.io.git
+  - secure: QOWgfWRKf8jBbFSlx2dBWakmdefQlj5Rr2kMj5u4BqORmG8l4w2slDpw81/rehoI9FMT6vpNTWEsR5pPsPeLQwB51yQzi7agTZWXn4hgajrkfZ6kBe+BL7T15iK2eDcoF9F3hHn6Kt/kyFq7USdj78AvVcHYVmKTZ3sjOBGj+R7O7+uF8LQquPzyqg904IFTxRHE41WMNXCzRBJJCEsdjn07KpY8UhlfvHVmHaLTXwcytqm2jQJZdBYxeybn566rKmNa7YKYmz9OzkqjHjmYTzKDBDwzorjrcjbf6q4Vh0AaKTokKlrTFdVHAG3IdmGVX5G+kwTi6KkAyXQdZf94uCDftgJRiaCV95sq2aqayJFV6y9tRC8rJ0kBhQGjhiIiZE1nPmqfXdYDbT7FnioVPnthkvVhHUTjJKC/suxXJwqTly+6+qD/dc+07PkNTCtynGdTum4K6+ubD5Js0MOtgn+Wa+KpDXq79wAxJPkedToNBT067CdPhzoToj3mrVpgRwceY5hp7nv0dOk/858x8XLvWntqTuBQ4zBrd3s0H79UkK1uTP1ZetoUFzefP/yNSsqksXdPZitdVWy0SGbxm3TojhdrpEiNfLkrwuLxx5UUyDa8MbZJYNzE3UD5kqWOrfXn31t2F6PBL4s3N9dMVUJqaweNNGK2YjsCmMmrEyY=
+language: node_js
+node_js:
+- '4.2'

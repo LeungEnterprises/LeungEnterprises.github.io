@@ -9,7 +9,7 @@ View the site here: [https://www.leungenterprises.com](https://www.leungenterpri
 3. Copy the compiled folder (`build`) from this repository into the `www-produce` repository to produce the files.
 
 ## Committing
-`git push origin source`
+`git push origin master:source`
 
 
 ## Included Plugins
