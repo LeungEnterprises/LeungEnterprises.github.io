@@ -105,6 +105,12 @@ gulp.task('copy-custom-vendor', () => {
     .pipe(gulp.dest('./dist/vendor/'));
 });
 
+// Miscellaneous copying
+gulp.task('misc-copy', () => {
+  return gulp.src(['./src/CNAME', './src/sitemap.xml'])
+    .pipe(gulp.dest('./dist/'));
+});
+
 gulp.task('useref', () => {
   let cssTasks = lazypipe()
     .pipe(autoprefixer, { cascade: false })
@@ -120,5 +126,5 @@ gulp.task('useref', () => {
     .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('produce', ['imagemin', 'copy-fonts', 'copy-custom-vendor', 'useref'], () => {
+gulp.task('produce', ['imagemin', 'copy-fonts', 'copy-custom-vendor', 'misc-copy', 'useref'], () => {
 });
