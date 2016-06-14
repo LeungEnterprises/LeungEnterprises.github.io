@@ -1,0 +1,54 @@
+.work {
+  .jumbotron-portfolio {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    
+    .row {
+      margin: 0;
+      
+      $sizes: xs sm md lg;
+      @each $size in $sizes {
+        @for $i from 1 to 12 {
+          .col-#{$size}-#{$i} {
+            padding: 0;
+          }
+        }
+      }
+      
+      .portfolio-item {
+        position: relative;
+        
+        .portfolio-item-bg {
+          width: 100%;
+          transition: all 0.3s;
+        }
+        
+        &:hover {
+          .portfolio-item-bg {
+            filter: brightness(30%);
+          }
+        }
+        
+        .portfolio-item-body {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          color: #eee;
+          opacity: 0;
+          transition: all 0.3s;
+          z-index: 1;
+          text-align: center;
+        }
+        
+        &:hover {
+          .portfolio-item-body {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

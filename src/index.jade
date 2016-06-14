@@ -1,0 +1,21 @@
+extends /_layout
+
+block content
+  //- No video for now
+    video(autoplay muted loop)
+      source(src=require('./static/geese.mp4') type='video/mp4')
+  .jumbotron.flex-center.trianglify
+    .container.text-center
+      .box-logo-o LE
+      h1.text-lowercase Leung Enterprises
+      p.text-uppercase Custom Software Solutions
+      br
+      br
+      a.btn.btn-outline.btn-lg(href='work') Our Work
+
+block scripts 
+  //- No more home video :(
+    script
+      :babel
+        const homeVideo = $('.home video')[0];
+        homeVideo.playbackRate = 0.25;

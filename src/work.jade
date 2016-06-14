@@ -1,0 +1,55 @@
+extends /_layout
+
+block content
+  -
+    var items = [
+      {
+        image: 'https://i.imgur.com/6ydP7Uw.png',
+        title: 'Final Grade Calculator',
+        description: 'iOS app built with Ionic and Angular',
+        url: 'https://itunes.apple.com/us/app/final-grade-calculator-calculate/id1103587993',
+      },
+      {
+        image: 'https://i.imgur.com/Z7HE9Of.png?1',
+        title: 'Angular 2 Todo App',
+        description: 'Web app development/tutorial',
+        url: 'https://www.nathanhleung.com/article/2015/12/26/getting-started-with-the-mean-stack/',
+      },
+      {
+        image: 'https://i.imgur.com/89N9cTP.jpg?1',
+        title: 'Saffron Indian Kitchen',
+        description: 'Web design for a fine dining establishment in Ambler, PA.',
+        url: 'http://www.saffronofphilly.com/',
+      },
+    ];
+  +jumbotron-header('Work', 'Making the world a better place')
+  .jumbotron.jumbotron-portfolio
+    .row
+      each item in items
+        .col-sm-4
+          a(href=item.url target='_blank')
+            .portfolio-item(
+              data-image=item.image
+            )
+              .portfolio-item-body.flex-center
+                .portfolio-item-text
+                  h2= item.title
+                  p= item.description
+  .jumbotron.jumbotron-header.trianglify
+    .container.text-center
+      .row  
+        .col-sm-8.col-sm-offset-2
+          h2.text-lowercase Solutions
+          p.
+            Our work encompasses mobile, web, frontend, and backend technologies.
+            We know HTML5/CSS3, Javascript, Wordpress, ES6, Jade/Sass, Gulp,
+            Angular, Node.js, Express, MongoDB, and Ionic.
+          br
+          a.btn.btn-outline.btn-lg(href='about') About Us
+          br
+          br
+          br
+          br
+  
+block scripts
+  script(src=require('file!./js/work'))

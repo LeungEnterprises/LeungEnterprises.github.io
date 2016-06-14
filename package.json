@@ -1,0 +1,45 @@
+{
+  "name": "leungenterprises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --config config/webpack.config.js",
+    "produce": "webpack --config config/webpack.prod.config.js -p",
+    "//": "We need this host option for Cloud9",
+    "dev": "node config/server"
+  },
+  "engines": {
+    "node": ">=6.0"
+  },
+  "author": "nathanhleung",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "autoprefixer": "^6.3.6",
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "bootstrap-sass": "^3.3.6",
+    "css-loader": "^0.23.1",
+    "expose-loader": "^0.7.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "font-awesome": "^4.6.3",
+    "html-webpack-plugin": "git://github.com/nathanhleung/html-webpack-plugin.git#e8d2022f26a882897dd28565754e57c3ad6e14ac",
+    "html5shiv": "^3.7.3",
+    "jade": "^1.11.0",
+    "jade-babel": "^5.0.0",
+    "jade-loader": "git://github.com/nathanhleung/pug-loader.git#a9c9eaec565150ec3e30fab9d1e2dc43604cb929",
+    "jquery": "^2.2.4",
+    "node-sass": "^3.7.0",
+    "postcss-loader": "^0.9.1",
+    "respond.js": "git://github.com/nathanhleung/Respond.git#da60e82f89bc0b5d832e46edb0a25e5c629e1ddf",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "trianglify": "^0.4.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^1.14.1"
+  }
+}

@@ -1,0 +1,25 @@
+/**
+ * Bootstrap Variable Overrides
+ */
+
+/**
+ * Color
+ */
+$theme-color: rebeccapurple;
+
+/**
+ * Typography
+ */
+$headings-font-family: 'Titillium Web';
+$font-family-serif: 'Playfair Display';
+$font-family-sans-serif: 'Open Sans';
+
+/**
+ * Navbar
+ */
+$navbar-height: 70px;
+// this is a purplish color, change this if theme changes
+$navbar-inverse-bg: rgba(#7A5D97, 0.9);
+$navbar-inverse-toggle-border-color: #eee;
+$navbar-inverse-link-color: #ccc;
+$navbar-inverse-link-active-bg: $navbar-inverse-bg;
