@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const DefinePlugin = require('webpack').DefinePlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const SitemapWebpackPlugin = require('sitemap-webpack-plugin');
 
 const rootpath = path.join(__dirname, '..');
 const fontLoaders = [
@@ -28,7 +30,7 @@ const fileLoaders = [
     loader: 'file',
   },
 ];
-const pagesHtmlPlugins = [
+const pages = [
   {
     filename: 'index',
     title: 'Home',
@@ -44,7 +46,8 @@ const pagesHtmlPlugins = [
     title: 'About',
     description: 'Founded in September 2014, Leung Enterprises now offers custom software solutions and consulting for a discriminating clientele.'
   },
-].map((page) => {
+];
+const pagesHtmlPlugins = pages.map((page) => {
   return new HtmlPlugin({
     filename: `${page.filename}.html`,
     template: path.join(rootpath, 'src', `${page.filename}.jade`),
@@ -100,6 +103,18 @@ module.exports = {
     new ExtractTextPlugin('bundle.css', {
       allChunks: true,
     }),
+    new CopyWebpackPlugin([{
+      from: 'src/CNAME',
+      to: 'CNAME',
+      toType: 'file',
+    }]),
+    new SitemapWebpackPlugin(
+      'https://www.leungenterprises.com',
+      pages.map((page) => {
+        return '/' + page.filename;
+      }),
+      'sitemap.xml'
+    ),
   ],
   postcss() {
     return [require('autoprefixer')]

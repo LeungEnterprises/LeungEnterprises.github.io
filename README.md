@@ -1,7 +1,5 @@
-# Leung Enterprises Homepage
-make sure you're on node >=5.0 (`nvm use node` should work)
+# Leung Enterprises Homepage v4
+Make sure you're on Node >=5.0 (`nvm use node` should work).
 
-for production run `npm run produce`
-
-## todo
-automate CNAME/sitemap generation
+- Dev config: `npm run dev`
+- Prod config: `npm run produce`
