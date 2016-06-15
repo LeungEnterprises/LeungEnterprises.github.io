@@ -46,6 +46,11 @@ const pages = [
     title: 'About',
     description: 'Founded in September 2014, Leung Enterprises now offers custom software solutions and consulting for a discriminating clientele.'
   },
+  {
+    filename: '404',
+    title: '404',
+    description: '404 - Page Not Found'
+  },
 ];
 const pagesHtmlPlugins = pages.map((page) => {
   return new HtmlPlugin({
@@ -117,6 +122,6 @@ module.exports = {
     ),
   ],
   postcss() {
-    return [require('autoprefixer')]
+    return [require('autoprefixer'), require('postcss-flexibility')]
   },
 };

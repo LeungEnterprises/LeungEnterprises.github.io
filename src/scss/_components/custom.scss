@@ -179,12 +179,13 @@ footer {
   
   // Instead of under the main (with flex), we want it ON the main
   .home &,
-  .work & {
+  .work &,
+  [class="404"] & {
     position: absolute;
     bottom: 0;
   }
   
-  body:not(.home):not(.work) & {
+  body:not(.home):not(.work):not([class="404"]) & {
     position: relative;
     
      &::before {

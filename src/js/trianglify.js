@@ -7,12 +7,13 @@ const trianglify = require('trianglify');
 
 // pages to skip trianglifying the footer on
 // also needs to be set in custom.scss:160
-const EXEMPT_FOOTER = ['home', 'work'];
+const EXEMPT_FOOTER = ['home', 'work', '404'];
 
 $(document).ready(() => {
   let footerSelector = 'body';
   EXEMPT_FOOTER.forEach((page) => {
-    footerSelector += `:not(.${page})`;
+    // class attribute selection because of 404 class
+    footerSelector += `:not([class="${page}"])`;
   });
   footerSelector += ' > footer';
   $(footerSelector).addClass('trianglify');

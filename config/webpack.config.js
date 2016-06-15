@@ -43,6 +43,11 @@ const pagesHtmlPlugins = [
     title: 'About',
     description: 'Founded in September 2014, Leung Enterprises now offers custom software solutions and consulting for a discriminating clientele.'
   },
+  {
+    filename: '404',
+    title: '404',
+    description: '404 - Page Not Found'
+  },
 ].map((page) => {
   return new HtmlPlugin({
     filename: `${page.filename}.html`,
