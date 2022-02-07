@@ -6,19 +6,19 @@ const rootpath = path.join(__dirname, '..');
 const fontLoaders = [
   {
     test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'url?limit=10000&mimetype=application/font-woff'
+    loader: 'url-loader?limit=10000&mimetype=application/font-woff'
   },
   {
     test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'url?limit=10000&mimetype=application/octet-stream'
+    loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
   },
   {
     test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file'
+    loader: 'file-loader'
   },
   {
     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'url?limit=10000&mimetype=image/svg+xml'
+    loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
   },
 ];
 const fileLoaders = [
@@ -70,16 +70,16 @@ module.exports = {
       ...fileLoaders,
       {
         test: require.resolve('jquery'),
-        loader: 'expose?jQuery!expose?$'
+        loader: 'expose-loader?jQuery!expose-loader?$'
       },
       {
         test: /\.jade$/,
-        loader: 'jade',
+        loader: 'jade-loader',
         query: {
           pretty: true,
           filters: [
             {
-              name: 'babel',
+              name: 'babel-loader',
               filter: 'require("jade-babel")({})',
             },
           ],
@@ -88,12 +88,19 @@ module.exports = {
       {
         test: /\.scss$/,
         // we can use extract-text-plugin in production
-        loaders: ['style', 'css', 'postcss', 'sass'],
+        loaders: ['style-loader', 'css-loader', {
+          loader: 'postcss-loader',
+          options: {
+            plugins() {
+              return [require('autoprefixer')]
+            }
+          }
+        }, 'sass-loader'],
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
       }
     ]
   },
@@ -104,7 +111,4 @@ module.exports = {
       MODE: '"DEV"', // it's a find and replace so we have to quote the string
     }),
   ],
-  postcss() {
-    return [require('autoprefixer')]
-  },
 };

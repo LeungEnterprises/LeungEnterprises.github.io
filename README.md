@@ -1,8 +1,6 @@
 # Leung Enterprises Homepage v4
 
-> Update: both leungenterprises.com and leung.enterprises now forward to nathanhleung.com. To edit this setting, log into Cloudflare DNS and remove the corresponding "Page Rule"
+Make sure you have `nvm` installed, then run `nvm use` to switch to the version specified in the `.nvmrc`. As of this writing, `npm install` does not appear to work with later versions of `node`/`npm` (`v16.13.1`).
 
-Make sure you're on Node >=5.0 (`nvm use node` should work).
-
-- Dev config: `npm run dev`
-- Prod config: `npm run produce`
+- Webpack development config: `npm run dev`
+- Webpack production config: `npm run produce`

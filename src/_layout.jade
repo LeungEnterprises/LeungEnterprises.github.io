@@ -21,7 +21,7 @@ html
     meta(name="msvalidate.01",  content="ED9DF581CA30EFE9A62E9865C01BFCA3")
     link(rel='publisher' href='https://plus.google.com/107479847642079902150')
     link(rel='canonical' href=canonical)
-    link(rel='icon' href=require('file!./static/favicon.png'))
+    link(rel='icon' href=require('file-loader!./static/favicon.png'))
     
     meta(property="fb:page_id" content="1192958917396758")
     meta(property="og:title" content=title + " | Leung Enterprises | Custom Software Solutions")
@@ -29,21 +29,21 @@ html
     meta(property="og:url" content=canonical)
     meta(property="og:site_name" content="Leung Enterprises")
     meta(property="og:type" content="website")
-    meta(property="og:image" content=require('file!./static/favicon.png'))
+    meta(property="og:image" content=require('file-loader!./static/favicon.png'))
       
     meta(name="twitter:card" content="summary")
     meta(name="twitter:url" content=canonical)
     meta(name="twitter:title" content=title + " | Leung Enterprises | Custom Software Solutions") 
     meta(name="twitter:description" content=description)
-    meta(name="twitter:image" content=require('file!./static/favicon.png'))
+    meta(name="twitter:image" content=require('file-loader!./static/favicon.png'))
     meta(name="twitter:site" content="@LeungEnterprise")
     
     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Titillium+Web:700|Playfair+Display:900|Open+Sans:300')
     block head
     <!--[if lt IE 9]>
-    script(src=require('file!html5shiv'))
-    script(src=require('file!Respond.js'))
-    script(src=require('file!flexibility'))
+    script(src=require('file-loader!html5shiv'))
+    script(src=require('file-loader!Respond.js'))
+    script(src=require('file-loader!flexibility'))
     <![endif]-->
     script.
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

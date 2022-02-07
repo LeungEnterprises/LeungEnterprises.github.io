@@ -9,19 +9,19 @@ const rootpath = path.join(__dirname, '..');
 const fontLoaders = [
   {
     test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'url?limit=10000&mimetype=application/font-woff'
+    loader: 'url-loader?limit=10000&mimetype=application/font-woff'
   },
   {
     test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'url?limit=10000&mimetype=application/octet-stream'
+    loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
   },
   {
     test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'file'
+    loader: 'file-loader'
   },
   {
     test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-    loader: 'url?limit=10000&mimetype=image/svg+xml'
+    loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
   },
 ];
 const fileLoaders = [
@@ -74,11 +74,11 @@ module.exports = {
       ...fileLoaders,
       {
         test: require.resolve('jquery'),
-        loader: 'expose?jQuery!expose?$'
+        loader: 'expose-loader?jQuery!expose-loader?$'
       },
       {
         test: /\.jade$/,
-        loader: 'jade',
+        loader: 'jade-loader',
         query: {
           filters: [
             {
@@ -90,12 +90,19 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(['css', 'postcss', 'sass']),
+        loader: ExtractTextPlugin.extract(['css-loader', {
+          loader: 'postcss-loader',
+          options: {
+            plugins() {
+              return [require('autoprefixer'), require('postcss-flexibility')]
+            }
+          }
+        }, 'sass-loader']),
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
       }
     ]
   },
@@ -105,7 +112,8 @@ module.exports = {
     new DefinePlugin({
       MODE: '"PROD"', // it's a find and replace so we have to quote the string
     }),
-    new ExtractTextPlugin('bundle.css', {
+    new ExtractTextPlugin({
+      filename: 'bundle.css',
       allChunks: true,
     }),
     new CopyWebpackPlugin([{
@@ -121,7 +129,4 @@ module.exports = {
       'sitemap.xml'
     ),
   ],
-  postcss() {
-    return [require('autoprefixer'), require('postcss-flexibility')]
-  },
 };
