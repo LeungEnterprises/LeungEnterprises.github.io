@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --config config/webpack.config.js",
-    "produce": "webpack --config config/webpack.prod.config.js -p",
+    "build": "webpack --config config/webpack.prod.config.js -p",
     "//": "We need this host option for Cloud9",
     "dev": "node config/server"
   },
